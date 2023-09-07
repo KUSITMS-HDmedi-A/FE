@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kusitms.ui"
+    namespace = "com.kusitms.hdmedi.feature.alarm.ui"
     compileSdk = 33
 
     defaultConfig {
