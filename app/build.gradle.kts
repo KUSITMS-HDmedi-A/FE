@@ -62,4 +62,5 @@ dependencies {
     implementation(project(":feature:home:ui"))
     implementation(project(":feature:medicine:ui"))
     implementation(project(":feature:selfcheck:ui"))
+    implementation(project(":core:network"))
 }
