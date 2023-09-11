@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -60,8 +62,4 @@ dependencies {
     implementation(project(":feature:home:ui"))
     implementation(project(":feature:medicine:ui"))
     implementation(project(":feature:selfcheck:ui"))
-
-    // navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
 }
