@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/menu_home"
+        android:title="홈"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/medicineFragment"
+        android:icon="@drawable/menu_pill"
+        android:title="약 관리"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="약 검색"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/selfCheckFragment"
+        android:icon="@drawable/menu_assignment"
+        android:title="자가진단"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/mypageFragment"
+        android:icon="@drawable/ic_person"
+        android:title="마이페이지"
+        app:showAsAction="withText" />
+
+</menu>

@@ -1,3 +1,8 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
+//plugins {
+//    id("org.jetbrains.kotlin.android")
+//}
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.com.android.application)
@@ -34,6 +39,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -42,7 +52,14 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation(project(":feature:alarm:ui"))
+    implementation(project(":feature:home:ui"))
+    implementation(project(":feature:medicine:ui"))
+    implementation(project(":feature:selfcheck:ui"))
 }
