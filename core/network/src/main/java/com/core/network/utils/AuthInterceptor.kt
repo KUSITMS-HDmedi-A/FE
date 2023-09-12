@@ -13,11 +13,11 @@ class AuthInterceptor @Inject constructor(
     private val tokenDataStore: TokenDataStore
 ): Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val jwt = runBlocking {
-            tokenDataStore.getAccessToken().first()
+        val token = runBlocking {
+            tokenDataStore.getToken()
         } ?: return errorResponse(chain.request())
 
-        val request = chain.request().newBuilder().header(AUTHORIZATION, "Bearer $jwt").build()
+        val request = chain.request().newBuilder().header(AUTHORIZATION, "Bearer $token").build()
         return chain.proceed(request)
     }
 
@@ -30,6 +30,6 @@ class AuthInterceptor @Inject constructor(
         .build()
 
     companion object {
-        private const val AUTHORIZATION = "Authorization"
+        private const val AUTHORIZATION = "access"
     }
 }

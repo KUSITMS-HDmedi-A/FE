@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Named
@@ -15,9 +16,14 @@ class TokenDataStore @Inject constructor(
     object PreferenceKey {
         val ACCESS_TOKEN_KEY = stringPreferencesKey("ACCESS_TOKEN")
         val REFRESH_TOKEN_KEY = stringPreferencesKey("REFRESH_TOKEN")
+        val SOCIAL_TOKEN_KEY = stringPreferencesKey("SOCIAL_TOKEN_KEY")
     }
 
-    fun getAccessToken(): Flow<String?> {
+    suspend fun getToken(): String?
+        = getAccessToken().first() ?: getSocialToken().first()
+
+
+    private fun getAccessToken(): Flow<String?> {
         return dataStore.data.map { prefs ->
             prefs[PreferenceKey.ACCESS_TOKEN_KEY]
         }
@@ -30,6 +36,24 @@ class TokenDataStore @Inject constructor(
     }
 
     suspend fun deleteAccessToken(){
+        dataStore.edit { prefs ->
+            prefs.remove(PreferenceKey.SOCIAL_TOKEN_KEY)
+        }
+    }
+
+    private fun getSocialToken(): Flow<String?> {
+        return dataStore.data.map { prefs ->
+            prefs[PreferenceKey.SOCIAL_TOKEN_KEY]
+        }
+    }
+
+    suspend fun saveSocialToken(token: String){
+        dataStore.edit { prefs ->
+            prefs[PreferenceKey.SOCIAL_TOKEN_KEY] = token
+        }
+    }
+
+    suspend fun deleteSocialToken(){
         dataStore.edit { prefs ->
             prefs.remove(PreferenceKey.ACCESS_TOKEN_KEY)
         }
@@ -51,10 +75,5 @@ class TokenDataStore @Inject constructor(
         dataStore.edit { prefs ->
             prefs.remove(PreferenceKey.REFRESH_TOKEN_KEY)
         }
-    }
-
-    suspend fun deleteTokens(){
-        deleteAccessToken()
-        deleteRefreshToken()
     }
 }
