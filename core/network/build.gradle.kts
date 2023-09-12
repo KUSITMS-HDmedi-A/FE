@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
     implementation(libs.datastore.preference)
+    implementation(platform(libs.okhttp.bom))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
