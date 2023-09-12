@@ -43,7 +43,8 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
     implementation(libs.datastore.preference)
-    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp.logging)
+    implementation(libs.okhttp)
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
 
