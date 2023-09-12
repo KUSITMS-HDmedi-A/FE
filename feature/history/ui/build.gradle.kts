@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.kusitms.hdmedi.feature.history.ui"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 30
