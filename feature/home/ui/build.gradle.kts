@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.kusitms.hdmedi.ui"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 30
