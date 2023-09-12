@@ -7,6 +7,8 @@ import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt")
+    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
@@ -54,13 +56,16 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.navigation)
     implementation(libs.navigation.ui)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
     implementation(project(":feature:alarm:ui"))
     implementation(project(":feature:home:ui"))
     implementation(project(":feature:medicine:ui"))
     implementation(project(":feature:selfcheck:ui"))
     implementation(project(":core:network"))
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }
