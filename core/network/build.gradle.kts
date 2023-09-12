@@ -44,6 +44,8 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.datastore.preference)
     implementation(platform(libs.okhttp.bom))
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
