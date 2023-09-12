@@ -13,6 +13,7 @@ hilt_version = "2.44"
 datastore_version = "1.0.0"
 okhttp_version = "4.10.0"
 retrofit_version = "2.9.0"
+moshi_version = "1.14.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -30,7 +31,8 @@ datastore-preference = {group="androidx.datastore", name = "datastore-preference
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp_version"}
 okhttp-logging = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp_version"}
 retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit_version"}
-retrofit-moshi = {group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit_version"}
+retrofit-converter-moshi = {group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit_version"}
+moshi-kotlin = {group = "com.squareup.moshi", name="moshi-kotlin", version.ref = "moshi_version"}
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
