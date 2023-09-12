@@ -1,5 +1,8 @@
 package com.core.network
 
+import com.core.network.model.EnrollMedicineRequestDto
+import com.core.network.model.ResponseDto
+import com.core.network.model.TokenResponseDto
 import retrofit2.http.POST
 
 interface ApiService {
@@ -10,6 +13,8 @@ interface ApiService {
     /**
      * auth (회원)
      */
+    @POST("/api/user/auth/kakao-login")
+    suspend fun kakaoLogin(): TokenResponseDto
 
     /**
      * child
@@ -18,4 +23,6 @@ interface ApiService {
     /**
      * medicine
      */
+    @POST("/api/medicine/enroll-medicine")
+    suspend fun enrollMedicine(medicine: EnrollMedicineRequestDto) : ResponseDto
 }
