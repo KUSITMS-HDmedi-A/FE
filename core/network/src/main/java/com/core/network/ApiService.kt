@@ -3,6 +3,7 @@ package com.core.network
 import com.core.network.model.EnrollMedicineRequestDto
 import com.core.network.model.ResponseDto
 import com.core.network.model.TokenResponseDto
+import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiService {
@@ -24,5 +25,5 @@ interface ApiService {
      * medicine
      */
     @POST("/api/medicine/enroll-medicine")
-    suspend fun enrollMedicine(medicine: EnrollMedicineRequestDto) : ResponseDto
+    suspend fun enrollMedicine(@Body medicine: EnrollMedicineRequestDto) : ResponseDto
 }
