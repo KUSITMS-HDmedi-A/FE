@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
+    implementation(libs.datastore.preference)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
