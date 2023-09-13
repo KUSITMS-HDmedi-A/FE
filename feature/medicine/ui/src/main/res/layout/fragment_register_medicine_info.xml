@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".RegisterMedicineInfoFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarRegisterMedicineInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewRegisterMedicineInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegisterMedicineInfoNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRegisterMedicineInfo"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/scrollViewLinearLayoutRegisterMedicineInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textViewRegisterMedicineInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="복용하시는 약의 정보를 입력해주세요."
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutRegisterMedicineInfoType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonRegisterMedicineInfoPicture"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="156dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="처방전 사진 찍기"
+                    android:textColor="@color/light_gray"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/light_gray" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonRegisterMedicineInfoWrite"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="156dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="직접 입력하기"
+                    android:textColor="@color/light_gray"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/light_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutRegisterMedicineInfoAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutRegisterMedicineInfoMedicine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:textColorHint="@color/light_gray"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/register_medicine_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextRegisterMedicineInfoMedicine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="약을 입력해주세요."
+                        android:textColorHint="@color/light_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonRegisterMedicineInfoAdd"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:drawableLeft="@drawable/add"
+                android:text="약 추가하기"
+                android:textColor="@color/main_blue"
+                android:textSize="16sp"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/main_blue" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRegisterMedicineInfoNext"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/main_blue"
+        android:text="다음"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
