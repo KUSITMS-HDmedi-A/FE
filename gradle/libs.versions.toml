@@ -9,6 +9,8 @@ appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
 nav_version = "2.4.0"
+calendar_version = "2.0.0"
+
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -18,8 +20,9 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-navigation = {group = "androidx.navigation", name ="navigation-fragment-ktx", version.ref = "nav_version"}
-navigation-ui = {group = "androidx.navigation", name ="navigation-ui-ktx", version.ref = "nav_version"}
+navigation = {group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "nav_version"}
+navigation-ui = {group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "nav_version"}
+calendar = {group = "io.github.architshah248.calendar", name = "awesome-calendar", version.ref = "calendar_version"}
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
