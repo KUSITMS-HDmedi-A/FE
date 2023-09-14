@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFFFF">
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -27,13 +26,23 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_default"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/margin_bottom"
             android:orientation="vertical">
 
             <include
-                layout="@layout/layout_btn" />
-
+                android:id="@+id/btn_kakao_login"
+                layout="@layout/layout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.IconButton"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="9dp"/>
             <include
-                layout="@layout/layout_btn" />
+                android:id="@+id/btn_email_login"
+                layout="@layout/layout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
