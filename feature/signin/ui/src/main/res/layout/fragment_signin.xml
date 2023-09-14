@@ -34,7 +34,8 @@
                 layout="@layout/layout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.Material3.Button.IconButton"/>
+                style="@style/Widget.Material3.Button.IconButton"
+                android:clickable="true"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="9dp"/>

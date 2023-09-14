@@ -1,8 +1,12 @@
 package com.kusitms.hdmedi.feature.signin.ui
 
 import android.content.res.ColorStateList
+import android.util.Log
 import com.core.common.BaseFragment
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
+import com.kusitms.hdmedi.core.navigation.NavigationGraphFlow
+import com.kusitms.hdmedi.core.navigation.ToNavGraph
 import com.kusitms.hdmedi.feature.signin.ui.databinding.FragmentSigninBinding
 
 class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_signin) {
@@ -25,6 +29,12 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_sig
             btn.iconTint = ColorStateList.valueOf(requireContext().getColor(com.core.common.R.color.icon_kakao))
         }
         binding.btnEmailLogin.txtContent = getString(R.string.login_email)
+
+        binding.btnEmailLogin.btn.setOnClickListener {
+            (requireActivity() as ToNavGraph).navigateToGraph(NavigationGraphFlow.BottomGraphFlow)
+            Snackbar.make(requireContext(), it, "Click!", Snackbar.LENGTH_SHORT).show()
+            Log.d("Signin", "clcik email btn")
+        }
     }
 
 }
