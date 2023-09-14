@@ -50,6 +50,16 @@ android {
 
 dependencies {
 
+    implementation(project(":core:navigation"))
+    implementation(project(":feature:signin:ui"))
+    implementation(project(":feature:alarm:ui"))
+    implementation(project(":feature:home:ui"))
+    implementation(project(":feature:medicine:ui"))
+    implementation(project(":feature:selfcheck:ui"))
+    implementation(project(":feature:search:ui"))
+    implementation(project(":feature:mypage:ui"))
+    implementation(project(":core:network"))
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -59,12 +69,6 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    implementation(project(":feature:signin:ui"))
-    implementation(project(":feature:alarm:ui"))
-    implementation(project(":feature:home:ui"))
-    implementation(project(":feature:medicine:ui"))
-    implementation(project(":feature:selfcheck:ui"))
-    implementation(project(":core:network"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

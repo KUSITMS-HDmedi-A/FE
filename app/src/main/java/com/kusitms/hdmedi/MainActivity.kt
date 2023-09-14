@@ -3,17 +3,21 @@ package com.kusitms.hdmedi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.kusitms.hdmedi.core.navigation.NavigationGraphFlow
+import com.kusitms.hdmedi.core.navigation.Navigator
+import com.kusitms.hdmedi.core.navigation.ToNavGraph
 import com.kusitms.hdmedi.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToNavGraph {
 
     lateinit var binding: ActivityMainBinding
+
+    private val navigator = Navigator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
+        navigator.navController = navController
 
         binding.navBar.setupWithNavController(navController)
 
@@ -49,5 +54,9 @@ class MainActivity : AppCompatActivity() {
             binding.navBar.isVisible =
                 appBarConfiguration.topLevelDestinations.contains(destination.id)
         }
+    }
+
+    override fun navigateToGraph(flow: NavigationGraphFlow) {
+        navigator.navigateToGraph(flow)
     }
 }
