@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
+    implementation(libs.kakao.login)
 
 
     testImplementation(libs.junit)
