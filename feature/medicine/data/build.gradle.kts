@@ -2,8 +2,6 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    kotlin("kapt")
-    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
@@ -36,13 +34,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":feature:medicine:domain"))
-    implementation(project(":core:network"))
-
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

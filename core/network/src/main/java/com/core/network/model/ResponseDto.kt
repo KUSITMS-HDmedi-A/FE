@@ -4,7 +4,7 @@ package com.core.network.model
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Response(
+data class ResponseDto(
     val code: Int,
     val message: String
 )

@@ -1,11 +1,9 @@
 package com.core.network
 
-import com.core.network.model.EnrollMedicineRequest
-import com.core.network.model.MedicineListResponse
-import com.core.network.model.Response
-import com.core.network.model.TokenResponse
+import com.core.network.model.EnrollMedicineRequestDto
+import com.core.network.model.ResponseDto
+import com.core.network.model.TokenResponseDto
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -17,7 +15,7 @@ interface ApiService {
      * auth (회원)
      */
     @POST("/api/user/auth/kakao-login")
-    suspend fun kakaoLogin(): TokenResponse
+    suspend fun kakaoLogin(): TokenResponseDto
 
     /**
      * child
@@ -27,9 +25,5 @@ interface ApiService {
      * medicine
      */
     @POST("/api/medicine/enroll-medicine")
-    suspend fun enrollMedicine(@Body medicine: EnrollMedicineRequest) : Response
-
-    //todo 임의로 한 것 (진짜 아님)
-    @GET("")
-    suspend fun getMedicines(): MedicineListResponse
+    suspend fun enrollMedicine(@Body medicine: EnrollMedicineRequestDto) : ResponseDto
 }
