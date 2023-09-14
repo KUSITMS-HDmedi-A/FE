@@ -1,8 +1,9 @@
 package com.core.network.datasource
 
-import com.core.network.model.EnrollMedicineRequestDto
-import com.core.network.model.ResponseDto
-import com.core.network.model.TokenResponseDto
+import com.core.network.model.EnrollMedicineRequest
+import com.core.network.model.MedicineListResponse
+import com.core.network.model.Response
+import com.core.network.model.TokenResponse
 
 interface NetworkDataSource {
     /**
@@ -12,7 +13,7 @@ interface NetworkDataSource {
     /**
      * auth (회원)
      */
-    suspend fun kakaoLogin(): TokenResponseDto
+    suspend fun kakaoLogin(): TokenResponse
 
     /**
      * child
@@ -21,5 +22,6 @@ interface NetworkDataSource {
     /**
      * medicine
      */
-    suspend fun enrollMedicine(medicine: EnrollMedicineRequestDto) : ResponseDto
+    suspend fun enrollMedicine(medicine: EnrollMedicineRequest) : Response
+    suspend fun getMedicines(): MedicineListResponse
 }
