@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.kakao.login)
+    implementation(libs.hilt.navigation.fragment)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
