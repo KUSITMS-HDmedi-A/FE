@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selfcheck_navigation"
+    app:startDestination="@id/selfCheckFragment">
+
+    <fragment
+        android:id="@+id/selfCheckFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckFragment"
+        android:label="fragment_self_check"
+        tools:layout="@layout/fragment_self_check">
+        <action
+            android:id="@+id/action_selfCheckFragment_to_adhdFragment"
+            app:destination="@id/adhdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adhdFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.AdhdFragment"
+        android:label="fragment_adhd"
+        tools:layout="@layout/fragment_adhd" >
+        <action
+            android:id="@+id/action_adhdFragment_to_selfCheckPersonFragment"
+            app:destination="@id/selfCheckPersonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selfCheckPersonFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckPersonFragment"
+        android:label="fragment_self_check_person"
+        tools:layout="@layout/fragment_self_check_person" >
+        <action
+            android:id="@+id/action_selfCheckPersonFragment_to_selfCheckQuestionFragment"
+            app:destination="@id/selfCheckQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selfCheckQuestionFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckQuestionFragment"
+        android:label="fragment_self_check_question"
+        tools:layout="@layout/fragment_self_check_question" >
+        <action
+            android:id="@+id/action_selfCheckQuestionFragment_to_selfCheckQuestionCompleteFragment"
+            app:destination="@id/selfCheckQuestionCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selfCheckQuestionCompleteFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckQuestionCompleteFragment"
+        android:label="fragment_self_check_question_complete"
+        tools:layout="@layout/fragment_self_check_question_complete" >
+        <action
+            android:id="@+id/action_selfCheckQuestionCompleteFragment_to_selfCheckResultFragment"
+            app:destination="@id/selfCheckResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selfCheckResultFragment"
+        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckResultFragment"
+        android:label="fragment_self_check_result"
+        tools:layout="@layout/fragment_self_check_result" >
+        <action
+            android:id="@+id/action_selfCheckResultFragment_to_selfCheckFragment"
+            app:destination="@id/selfCheckFragment" />
+    </fragment>
+</navigation>
