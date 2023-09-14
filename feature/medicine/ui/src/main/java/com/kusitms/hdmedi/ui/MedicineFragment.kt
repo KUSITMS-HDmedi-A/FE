@@ -42,6 +42,7 @@ class MedicineFragment : Fragment() {
                 title = "약관리"
             }
 
+            fragmentList.clear()
             fragmentList.add(MedicineManagementFragment())
             fragmentList.add(MedicineManagementFragment())
 

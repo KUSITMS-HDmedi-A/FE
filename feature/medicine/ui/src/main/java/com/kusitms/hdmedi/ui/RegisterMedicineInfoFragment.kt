@@ -34,6 +34,13 @@ class RegisterMedicineInfoFragment : Fragment() {
 
             toolbarRegisterMedicineInfo.run {
                 title = "약 등록"
+
+                // back 버튼 설정
+                setNavigationIcon(R.drawable.arrow_back)
+
+                setNavigationOnClickListener {
+                    navController.popBackStack()
+                }
             }
 
             buttonRegisterMedicineInfoPicture.setOnClickListener {
