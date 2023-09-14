@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelfCheckFragment">
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".SelfCheckFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarSelfCheck"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="self check" />
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <view
+                android:id="@+id/view"
+                class="com.google.android.material.divider.MaterialDivider"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                app:dividerColor="#EFEFEF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/imageViewSelfCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/adhd_background" />
+
+                <TextView
+                    android:id="@+id/textViewSelfCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-40dp"
+                    android:text="남들보다 조금 산만한 우리 아이,\nADHD가 아닐까?"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_background">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/textViewSelfCheckInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="• 유치원, 학교 수업에서 잘 집중하지 못해요."
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textViewSelfCheckInfo2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="• 장난감, 연필 등을 자주 잃어버려요."
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textViewSelfCheckInfo3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="• 가만히 있지 못하고 몸을 꿈틀거려요. "
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/textViewSelfCheckInfo4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="사소해 보이지만 부모님의 관심이 필요할 수 있어요 :)"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSelfCheckStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/main_blue"
+                    android:text="ADHD 검사 시작하기"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
