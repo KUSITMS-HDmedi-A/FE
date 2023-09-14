@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    implementation(project(":feature:signin:ui"))
     implementation(project(":feature:alarm:ui"))
     implementation(project(":feature:home:ui"))
     implementation(project(":feature:medicine:ui"))
