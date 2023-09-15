@@ -36,6 +36,8 @@ class CreateAlarmFragment :
         binding.autoTv.setOnItemClickListener { parent, view, position, id ->
             Log.d(javaClass.name, "${itemAdapter.getItemId(position)}")
         }
+
+        binding.layoutEnd.tvLabel.text = getString(R.string.end)
     }
 
 }
