@@ -1,5 +1,6 @@
 package com.kusitms.hdmedi.feature.signin.data.di
 
+import com.core.common.SharedPreferenceManager
 import com.core.network.datasource.NetworkDataSource
 import com.core.network.utils.TokenDataStore
 import com.kusitms.hdmedi.feature.signin.data.repo.SigninRepositoryImpl
@@ -26,8 +27,9 @@ internal abstract class DataLayerModule {
         @Singleton
         fun provideSigninRepo(
             dataSource: NetworkDataSource,
-            tokenDataStore: TokenDataStore
+            tokenDataStore: TokenDataStore,
+            sharedPreferenceManager: SharedPreferenceManager
         ): SigninRepository =
-            SigninRepositoryImpl(dataSource = dataSource, tokenSource = tokenDataStore)
+            SigninRepositoryImpl(dataSource = dataSource, tokenSource = tokenDataStore,sharedPreferences = sharedPreferenceManager)
     }
 }

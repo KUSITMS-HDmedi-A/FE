@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.math.sign
 
 @HiltViewModel
 class SigninViewModel @Inject constructor(
@@ -21,7 +22,11 @@ class SigninViewModel @Inject constructor(
     private val _stateHolder = MutableStateFlow(Resource.success(false))
     val stateHolder get() = _stateHolder
 
+    private val fcm = signinRepository.getFCMToken()
+
     fun requestLogin(token: String) = viewModelScope.launch {
+        if (fcm == null) return@launch
+
         _stateHolder.value = Resource.loading(null)
         signinRepository.saveSocialToken(token).collect {
             Log.d("signin", "token = $it")
