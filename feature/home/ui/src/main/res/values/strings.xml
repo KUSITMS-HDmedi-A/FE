@@ -18,4 +18,7 @@
     <string name="modify">수정</string>
     <string name="start">시작</string>
     <string name="end">종료</string>
+    <string name="everyday">매일</string>
+    <string name="weekday">평일</string>
+    <string name="weekend">주말</string>
 </resources>
