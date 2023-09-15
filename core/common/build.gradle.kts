@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt")
+    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
@@ -25,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -38,6 +40,9 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
