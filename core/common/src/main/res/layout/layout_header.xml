@@ -6,11 +6,15 @@
         <variable
             name="headerTitle"
             type="String" />
+        <variable
+            name="rightTxt"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:paddingHorizontal="@dimen/padding_content2"
         android:paddingVertical="@dimen/padding_content">
 
@@ -43,7 +47,8 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{rightTxt}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

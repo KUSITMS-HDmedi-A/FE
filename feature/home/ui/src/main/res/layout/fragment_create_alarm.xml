@@ -10,17 +10,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CreateAlarmFragment">
+        tools:context=".CreateAlarmFragment"
+        android:background="@color/white">
 
         <include
             android:id="@+id/header"
             layout="@layout/layout_header"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Space
+            android:id="@+id/space_header_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_default"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/header">
+            app:layout_constraintTop_toBottomOf="@id/space_header_bottom">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +38,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/select_person" />
+                    android:text="@string/select_person"
+                    style="@style/SubTitle"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -46,7 +54,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/select_medicine" />
+                    android:text="@string/select_medicine"
+                    style="@style/SubTitle"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -56,7 +65,7 @@
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/select_medicine"
+                    android:hint="@string/select_medicine_short"
                     android:minHeight="56dp"
                     app:hintTextColor="@color/gray_txt">
 
@@ -68,11 +77,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
+                    android:layout_height="28dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/select_period" />
+                    android:text="@string/select_period"
+                    style="@style/SubTitle"/>
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="4dp"/>
@@ -84,23 +94,6 @@
                     android:textColor="@color/gray_txt"
                     android:textFontWeight="400"/>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/select_alarm_time" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/select_day" />
 
 
                 <Space
@@ -110,7 +103,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/select_label" />
+                    android:text="@string/select_alarm_time"
+                    style="@style/SubTitle"/>
+
+                <TimePicker
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:timePickerMode="spinner"
+                    />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_day"
+                    style="@style/SubTitle"/>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_label"
+                    style="@style/SubTitle"/>
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/padding_content"/>
@@ -120,20 +142,22 @@
                     android:layout_height="150dp"
                     android:orientation="vertical"
                     android:paddingHorizontal="10dp"
-                    android:paddingVertical="@dimen/margin_default">
+                    android:paddingVertical="@dimen/margin_default"
+                    android:background="@drawable/bg_r12_stroke">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label"
                         android:textColor="@color/gray_txt"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        android:layout_marginBottom="6dp"/>
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="text"
-
+                        android:background="@color/transparent"
                         />
                 </LinearLayout>
 

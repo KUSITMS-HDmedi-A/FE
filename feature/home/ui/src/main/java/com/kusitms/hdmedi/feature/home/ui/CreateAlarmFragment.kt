@@ -24,7 +24,10 @@ class CreateAlarmFragment :
     }
 
     private fun initView() {
-        binding.header.headerTitle = getString(R.string.add_alarm)
+        binding.header.apply {
+            headerTitle = getString(R.string.add_alarm)
+            rightTxt = getString(R.string.enroll)
+        }
 
         val itemList = listOf("타이레놀", "소화제", "김기약", "해열제")
         val itemAdapter: ArrayAdapter<String> =
