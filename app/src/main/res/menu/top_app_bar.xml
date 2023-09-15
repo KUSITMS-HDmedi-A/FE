@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:contentDescription="@string/home"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/medicine_navigation"
+        android:contentDescription="@string/medicine"
+        android:title="@string/medicine"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:contentDescription="@string/search"
+        android:title="@string/search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/selfcheck_navigation"
+        android:contentDescription="@string/selfcheck"
+        android:title="@string/selfcheck"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mypageFragment"
+        android:contentDescription="@string/mypage"
+        android:title="@string/mypage"
+        app:showAsAction="never" />
+
+</menu>
