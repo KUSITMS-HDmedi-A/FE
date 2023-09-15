@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932265517335",
+    "project_id": "hdmedi-9e4d2",
+    "storage_bucket": "hdmedi-9e4d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932265517335:android:5d27a85172ab9748531752",
+        "android_client_info": {
+          "package_name": "com.kusitms.hdmedi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCetq6pWqgzsnOWIcAYmWPTA_6ZyG78hyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

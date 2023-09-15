@@ -1,0 +1,5 @@
+<resources>
+    <string name="login_kakao">카카오톡으로 계속하기</string>
+    <string name="login_email">이메일로 계속하기</string>
+    <string name="description_logo">우리아이 약관리</string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/base_nav_graph"
+    app:startDestination="@id/signin_nav_graph">
+
+    <include app:graph="@navigation/signin_nav_graph" />
+    <include app:graph="@navigation/bottom_nav_graph" />
+    <include app:graph="@navigation/medicine_navigation" />
+    <include app:graph="@navigation/selfcheck_navigation" />
+
+    <action
+        android:id="@+id/action_signin_graph_to_bottom_graph"
+        app:destination="@id/bottom_nav_graph"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        />
+
+
+</navigation>

@@ -23,7 +23,7 @@ class TokenDataStore @Inject constructor(
         = getAccessToken().first() ?: getSocialToken().first()
 
 
-    private fun getAccessToken(): Flow<String?> {
+    fun getAccessToken(): Flow<String?> {
         return dataStore.data.map { prefs ->
             prefs[PreferenceKey.ACCESS_TOKEN_KEY]
         }
@@ -41,7 +41,7 @@ class TokenDataStore @Inject constructor(
         }
     }
 
-    private fun getSocialToken(): Flow<String?> {
+    fun getSocialToken(): Flow<String?> {
         return dataStore.data.map { prefs ->
             prefs[PreferenceKey.SOCIAL_TOKEN_KEY]
         }

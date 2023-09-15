@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_blue">#0069CF</color>
     <color name="sky_blue">#F1F8FF</color>
+    <color name="yellow_kakao">#FEE500</color>
+    <color name="dark_kakao">#373737</color>
 </resources>
