@@ -2,15 +2,19 @@ package com.kusitms.hdmedi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.core.common.SharedPreferenceManager
+import com.google.firebase.messaging.FirebaseMessaging
 import com.kusitms.hdmedi.core.navigation.NavigationGraphFlow
 import com.kusitms.hdmedi.core.navigation.Navigator
 import com.kusitms.hdmedi.core.navigation.ToNavGraph
 import com.kusitms.hdmedi.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ToNavGraph {
@@ -19,11 +23,15 @@ class MainActivity : AppCompatActivity(), ToNavGraph {
 
     private val navigator = Navigator()
 
+    @Inject
+    lateinit var sharedPreferenceManager: SharedPreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding()
         setContentView(binding.root)
         initNavigation()
+        setFCMToken()
     }
 
     private fun initBinding() {
@@ -58,5 +66,24 @@ class MainActivity : AppCompatActivity(), ToNavGraph {
 
     override fun navigateToGraph(flow: NavigationGraphFlow) {
         navigator.navigateToGraph(flow)
+    }
+
+    private fun setFCMToken(){
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {task ->
+            if (!task.isSuccessful) {
+                Log.w(javaClass.name, "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            Log.d(javaClass.name, "FCM token = $token")
+
+            if (this::sharedPreferenceManager.isInitialized) {
+                Log.d(javaClass.name, "this::sharedPreferenceManager.isInitialized")
+                sharedPreferenceManager.setFCMToken(token)
+            }
+        }
+
     }
 }
