@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kusitms.hdmedi.ui"
+    namespace = "com.kusitms.hdmedi.feature.home.ui"
     compileSdk = 33
 
     defaultConfig {
@@ -33,6 +33,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
 }
 
