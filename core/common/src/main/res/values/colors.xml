@@ -9,6 +9,7 @@
     <color name="icon_kakao">#381E1E</color>
     <color name="gray_bg">#EFEFEF</color>
     <color name="gray_txt">#9F9F9F</color>
+    <color name="gray_dark_txt">#373737</color>
     <color name="sky_blue_bg">#EAF4FF</color>
     <color name="transparent">#00FFFFFF</color>
 </resources>
