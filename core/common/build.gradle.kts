@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
+
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
