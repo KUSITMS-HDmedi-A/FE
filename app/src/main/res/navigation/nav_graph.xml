@@ -18,17 +18,12 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/selfCheckFragment"
-        android:name="com.kusitms.hdmedi.feature.selfcheck.ui.SelfCheckFragment"
-        android:label="SelfCheckFragment"
-        tools:layout="@layout/fragment_self_check" />
-
-    <fragment
         android:id="@+id/mypageFragment"
         android:name="com.kusitms.hdmedi.MypageFragment"
         android:label="MypageFragment"
         tools:layout="@layout/fragment_mypage" />
 
     <include app:graph="@navigation/medicine_navigation" />
+    <include app:graph="@navigation/selfcheck_navigation" />
 
 </navigation>
