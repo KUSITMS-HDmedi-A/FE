@@ -9,7 +9,7 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/medicineFragment"
+        android:id="@+id/medicine_navigation"
         android:icon="@drawable/menu_pill"
         android:title="약 관리"
         app:showAsAction="withText" />

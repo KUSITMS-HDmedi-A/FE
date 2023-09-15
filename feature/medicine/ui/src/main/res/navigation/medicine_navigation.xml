@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/medicine_navigation"
+    app:startDestination="@id/medicineFragment">
+
+    <fragment
+        android:id="@+id/registerMedicinePurposeFragment"
+        android:name="com.kusitms.hdmedi.ui.RegisterMedicinePurposeFragment"
+        android:label="fragment_register_medicine_purpose"
+        tools:layout="@layout/fragment_register_medicine_purpose" >
+        <action
+            android:id="@+id/action_registerMedicinePurposeFragment_to_registerMedicineDateFragment"
+            app:destination="@id/registerMedicineDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerMedicineDateFragment"
+        android:name="com.kusitms.hdmedi.ui.RegisterMedicineDateFragment"
+        android:label="fragment_register_medicine_date"
+        tools:layout="@layout/fragment_register_medicine_date" >
+        <action
+            android:id="@+id/action_registerMedicineDateFragment_to_registerMedicineInfoFragment"
+            app:destination="@id/registerMedicineInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineFragment"
+        android:name="com.kusitms.hdmedi.ui.MedicineFragment"
+        android:label="fragment_medicine"
+        tools:layout="@layout/fragment_medicine" >
+        <action
+            android:id="@+id/action_medicineFragment_to_registerMedicinePurposeFragment"
+            app:destination="@id/registerMedicinePurposeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerMedicineInfoFragment"
+        android:name="com.kusitms.hdmedi.ui.RegisterMedicineInfoFragment"
+        android:label="fragment_register_medicine_info"
+        tools:layout="@layout/fragment_register_medicine_info" >
+        <action
+            android:id="@+id/action_registerMedicineInfoFragment_to_registerMedicineCompleteFragment"
+            app:destination="@id/registerMedicineCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerMedicineCompleteFragment"
+        android:name="com.kusitms.hdmedi.ui.RegisterMedicineCompleteFragment"
+        android:label="fragment_register_medicine_complete"
+        tools:layout="@layout/fragment_register_medicine_complete" >
+        <action
+            android:id="@+id/action_registerMedicineCompleteFragment_to_medicineFragment"
+            app:destination="@id/medicineFragment" />
+        <action
+            android:id="@+id/action_registerMedicineCompleteFragment_to_registerMedicinePurposeFragment"
+            app:destination="@id/registerMedicinePurposeFragment" />
+    </fragment>
+</navigation>

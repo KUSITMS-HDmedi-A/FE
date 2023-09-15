@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/medicineFragment"
-        android:name="com.kusitms.hdmedi.ui.MedicineFragment"
-        android:label="MedicineFragment"
-        tools:layout="@layout/fragment_medicine" />
-
-    <fragment
         android:id="@+id/searchFragment"
         android:name="com.kusitms.hdmedi.SearchFragment"
         android:label="SearchFragment"
@@ -35,6 +29,6 @@
         android:label="MypageFragment"
         tools:layout="@layout/fragment_mypage" />
 
-
+    <include app:graph="@navigation/medicine_navigation" />
 
 </navigation>
