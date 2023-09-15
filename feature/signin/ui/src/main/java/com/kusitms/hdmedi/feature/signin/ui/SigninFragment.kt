@@ -60,7 +60,6 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_sig
     private fun initClickListener() {
         binding.btnEmailLogin.btn.setOnClickListener {
             navigateToBottomFlow()
-            viewModel.requestLogin("test")
             Snackbar.make(requireContext(), it, "Click!", Snackbar.LENGTH_SHORT).show()
         }
 

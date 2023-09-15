@@ -8,6 +8,7 @@ espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
+calendar_version = "2.0.0"
 nav_version = "2.5.3"
 hilt_version = "2.44"
 datastore_version = "1.0.0"
@@ -28,6 +29,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+calendar = {group = "io.github.architshah248.calendar", name = "awesome-calendar", version.ref = "calendar_version"}
 navigation = {group = "androidx.navigation", name ="navigation-fragment-ktx", version.ref = "nav_version"}
 navigation-ui = {group = "androidx.navigation", name ="navigation-ui-ktx", version.ref = "nav_version"}
 hilt-navigation-fragment = {group = "androidx.hilt", name = "hilt-navigation-fragment", version.ref = "hilt_navigation_version"}
@@ -43,6 +45,7 @@ kakao-login = {group = "com.kakao.sdk", name = "v2-user", version.ref = "kakao_v
 firebase-bom = {group = "com.google.firebase", name = "firebase-bom", version.ref="firebase_version"}
 firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
 firebase-messaging = {group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebase_msg_version"}
+
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
