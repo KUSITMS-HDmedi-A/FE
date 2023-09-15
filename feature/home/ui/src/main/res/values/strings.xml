@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="medicine_report">약 보고서</string>
+    <string name="medicine_alarm">약 알람</string>
+    <string name="complete_take">복용 완료</string>
+    <string name="before_take">복용 전</string>
+</resources>
