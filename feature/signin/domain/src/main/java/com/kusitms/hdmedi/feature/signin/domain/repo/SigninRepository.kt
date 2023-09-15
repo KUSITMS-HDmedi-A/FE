@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface SigninRepository {
     suspend fun saveSocialToken(token: String): Flow<String?>
-    suspend fun requestLogin(): Tokens
+    suspend fun requestLogin(): Flow<Tokens>
     suspend fun saveJwtTokens(accessToken: String, refreshToken: String): Flow<String?>
 }

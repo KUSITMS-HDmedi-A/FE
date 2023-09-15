@@ -5,7 +5,9 @@ import com.core.network.utils.TokenDataStore
 import com.kusitms.hdmedi.feature.signin.data.mapper.toDomainTokens
 import com.kusitms.hdmedi.feature.signin.domain.model.Tokens
 import com.kusitms.hdmedi.feature.signin.domain.repo.SigninRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class SigninRepositoryImpl @Inject constructor(
@@ -13,16 +15,16 @@ class SigninRepositoryImpl @Inject constructor(
     private val tokenSource: TokenDataStore
 ): SigninRepository {
     override suspend fun saveSocialToken(token: String): Flow<String?> {
-        tokenSource.saveSocialToken(token)
-        return tokenSource.getSocialToken()
+        return tokenSource.getSocialToken().flowOn(Dispatchers.IO)
     }
 
-    override suspend fun requestLogin(): Tokens =
-        dataSource.kakaoLogin().toDomainTokens()
+    override suspend fun requestLogin(): Flow<Tokens> =
+        dataSource.kakaoLogin().toDomainTokens().flowOn(Dispatchers.IO)
 
     override suspend fun saveJwtTokens(accessToken: String, refreshToken: String): Flow<String?> {
         tokenSource.saveAccessToken(accessToken)
         tokenSource.saveRefreshToken(refreshToken)
-        return tokenSource.getAccessToken()
+        tokenSource.deleteSocialToken()
+        return tokenSource.getAccessToken().flowOn(Dispatchers.IO)
     }
 }
