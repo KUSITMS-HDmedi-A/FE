@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.kusitms.hdmedi.feature.selfcheck.ui.databinding.FragmentSelfCheckBinding
+import com.kusitms.hdmedi.feature.selfcheck.ui.databinding.FragmentAdhdBinding
 
-class SelfCheckFragment : Fragment() {
 
-    lateinit var fragmentSelfCheckBinding: FragmentSelfCheckBinding
+class AdhdFragment : Fragment() {
+
+    lateinit var fragmentAdhdBinding: FragmentAdhdBinding
 
     lateinit var navController: NavController
 
@@ -20,25 +21,24 @@ class SelfCheckFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        fragmentSelfCheckBinding = FragmentSelfCheckBinding.inflate(inflater)
+        fragmentAdhdBinding = FragmentAdhdBinding.inflate(inflater)
 
-        fragmentSelfCheckBinding.run {
-            toolbarSelfCheck.run {
+        fragmentAdhdBinding.run {
+            toolbarAdhd.run {
                 title = "자가진단"
             }
         }
-        return fragmentSelfCheckBinding.root
+        return fragmentAdhdBinding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
 
-        fragmentSelfCheckBinding.run {
-            buttonSelfCheckStart.setOnClickListener {
-                navController.navigate(R.id.action_selfCheckFragment_to_adhdFragment)
+        fragmentAdhdBinding.run {
+            buttonAdhdStart.setOnClickListener {
+                navController.navigate(R.id.action_adhdFragment_to_selfCheckPersonFragment)
             }
         }
     }

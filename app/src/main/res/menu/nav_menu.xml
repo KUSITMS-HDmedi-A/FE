@@ -21,7 +21,7 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/selfCheckFragment"
+        android:id="@+id/selfcheck_navigation"
         android:icon="@drawable/menu_assignment"
         android:title="자가진단"
         app:showAsAction="withText" />
