@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.core.common.BaseFragment
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentCreateAlarmBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreateAlarmFragment : BaseFragment<FragmentCreateAlarmBinding>(R.layout.fragment_create_alarm) {
     override fun createView(binding: FragmentCreateAlarmBinding) {
-        TODO("Not yet implemented")
+
     }
 
     override fun viewCreated() {
-        TODO("Not yet implemented")
+
     }
 
 }
