@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kusitms.hdmedi.feature.signin.data"
+    namespace = "com.kusitms.hdmedi.feature.signin.domain"
     compileSdk = 33
 
     defaultConfig {
@@ -36,9 +36,7 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":feature:signin:domain"))
-    implementation(project(":core:network"))
+    implementation(project(":core:common"))
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
