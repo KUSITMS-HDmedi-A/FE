@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="32dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_week_selector">
+        android:background="@drawable/bg_skyblue_selector">
 
         <TextView
             android:id="@+id/tv_str_day"
