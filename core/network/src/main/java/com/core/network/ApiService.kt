@@ -1,6 +1,7 @@
 package com.core.network
 
 import com.core.network.model.AddAlarmRequest
+import com.core.network.model.AlarmAddResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -23,6 +24,9 @@ interface ApiService {
      */
     @POST("/api/alarm/add")
     suspend fun postAlarm(@Body alarmRequest: AddAlarmRequest): Response
+
+    @GET("/api/alarm/add-page")
+    suspend fun getAddAlarmData(): AlarmAddResponse
 
     /**
      * auth (회원)
