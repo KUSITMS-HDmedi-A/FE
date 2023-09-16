@@ -16,11 +16,9 @@ class TokenDataStore @Inject constructor(
     object PreferenceKey {
         val ACCESS_TOKEN_KEY = stringPreferencesKey("ACCESS_TOKEN")
         val REFRESH_TOKEN_KEY = stringPreferencesKey("REFRESH_TOKEN")
-        val SOCIAL_TOKEN_KEY = stringPreferencesKey("SOCIAL_TOKEN_KEY")
     }
 
-    suspend fun getToken(): String?
-        = getAccessToken().first() ?: getSocialToken().first()
+    suspend fun getToken(): String? = getAccessToken().first()
 
 
     fun getAccessToken(): Flow<String?> {
@@ -36,24 +34,6 @@ class TokenDataStore @Inject constructor(
     }
 
     suspend fun deleteAccessToken(){
-        dataStore.edit { prefs ->
-            prefs.remove(PreferenceKey.SOCIAL_TOKEN_KEY)
-        }
-    }
-
-    fun getSocialToken(): Flow<String?> {
-        return dataStore.data.map { prefs ->
-            prefs[PreferenceKey.SOCIAL_TOKEN_KEY]
-        }
-    }
-
-    suspend fun saveSocialToken(token: String){
-        dataStore.edit { prefs ->
-            prefs[PreferenceKey.SOCIAL_TOKEN_KEY] = token
-        }
-    }
-
-    suspend fun deleteSocialToken(){
         dataStore.edit { prefs ->
             prefs.remove(PreferenceKey.ACCESS_TOKEN_KEY)
         }

@@ -28,14 +28,15 @@ class SigninViewModel @Inject constructor(
         if (fcm == null) return@launch
 
         _stateHolder.value = Resource.loading(null)
-        signinRepository.saveSocialToken(token).collect {
-            Log.d("signin", "token = $it")
+        signinRepository.saveAccessToken(token).collect {
+            Log.d(javaClass.name, "kakaoToken = $it")
             signinRepository.requestLogin().collect { tokens ->
                 withContext(Dispatchers.IO) {
                     signinRepository.saveJwtTokens(tokens.accessToken, tokens.refreshToken)
                         .collect {
-                            if (tokens.accessToken == it) _stateHolder.value =
-                                Resource.success(true)
+                            Log.d(javaClass.name, "jwtToken = ${tokens.accessToken==it} ")
+                            if (tokens.accessToken == it)
+                                _stateHolder.value = Resource.success(true)
                         }
                 }
             }

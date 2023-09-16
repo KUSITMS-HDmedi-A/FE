@@ -20,6 +20,7 @@ hilt_navigation_version = "1.0.0"
 google-services = "4.3.15"
 firebase_version = "32.2.3"
 firebase_msg_version = "23.2.1"
+glide_version = "4.16.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -45,6 +46,8 @@ kakao-login = {group = "com.kakao.sdk", name = "v2-user", version.ref = "kakao_v
 firebase-bom = {group = "com.google.firebase", name = "firebase-bom", version.ref="firebase_version"}
 firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
 firebase-messaging = {group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebase_msg_version"}
+glide = {group = "com.github.bumptech.glide", name = "glide", version.ref= "glide_version"}
+glide-compiler = {group = "com.github.bumptech.glide", name = "compiler", version.ref= "glide_version"}
 
 
 [plugins]
