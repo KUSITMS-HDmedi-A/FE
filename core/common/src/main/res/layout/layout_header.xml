@@ -16,15 +16,17 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:paddingHorizontal="@dimen/padding_content2"
-        android:paddingVertical="@dimen/padding_content">
+        android:paddingVertical="@dimen/padding_default">
 
         <ImageView
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"/>
 
         <TextView
             android:layout_width="wrap_content"

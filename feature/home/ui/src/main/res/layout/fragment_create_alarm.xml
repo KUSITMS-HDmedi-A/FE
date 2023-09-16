@@ -45,7 +45,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/padding_content" />
 
-                <include layout="@layout/layout_rv_people" />
+                <include
+                    android:id="@+id/rv_people"
+                    layout="@layout/layout_rv_people" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -140,13 +142,17 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
+                    android:layout_height="20dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/select_day"
                     style="@style/SubTitle"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
                 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -172,13 +178,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray_bg"/>
+                    android:background="@color/gray_bg"
+                    android:layout_marginVertical="@dimen/padding_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     tools:itemCount="7"
                     tools:listitem="@layout/item_day"/>
 
@@ -195,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/padding_content"/>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:orientation="vertical"
@@ -204,21 +211,29 @@
                     android:background="@drawable/bg_r12_stroke">
 
                     <TextView
+                        android:id="@+id/tv_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label"
                         android:textColor="@color/gray_txt"
                         android:textSize="10sp"
-                        android:layout_marginBottom="6dp"/>
+                        android:layout_marginBottom="6dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="0dp"
                         android:inputType="text"
                         android:background="@color/transparent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         />
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"/>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

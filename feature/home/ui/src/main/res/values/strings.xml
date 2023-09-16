@@ -7,7 +7,7 @@
     <string name="add_alarm">알람 추가</string>
     <string name="select_person">사람을 선택해주세요</string>
     <string name="select_medicine">약을 선택해주세요</string>
-    <string name="select_medicine_short">약을 선택</string>
+    <string name="select_medicine_short">약 선택</string>
     <string name="select_period">기간 선택</string>
     <string name="select_period_description">한번만 선택하면 바꾸기 전까지 자동으로 저장돼요!</string>
     <string name="select_alarm_time">알람 시간 선택</string>
