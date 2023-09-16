@@ -59,6 +59,9 @@ dependencies {
     implementation(libs.navigation)
     implementation(libs.navigation.ui)
 
+    implementation(libs.calendar)
+
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
