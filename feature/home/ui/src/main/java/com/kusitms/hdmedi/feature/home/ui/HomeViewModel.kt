@@ -15,9 +15,6 @@ class HomeViewModel @Inject constructor(
 
     //val _selectedProfile
 
-    init {
-        DateUtil.getCurrentWeek()
-    }
 
     val alarmList = listOf<Alarm>(
         Alarm(
