@@ -46,6 +46,7 @@ android {
 dependencies {
 
     implementation(project(":core:common"))
+    implementation(project(":feature:home:domain"))
 
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
