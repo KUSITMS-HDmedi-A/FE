@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.core.common.BaseFragment
+import com.core.common.adapter.AlarmAdapter
 import com.core.common.adapter.ProfileAdapter
 import com.core.common.model.Profile
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentHomeBinding
@@ -27,30 +28,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private fun initView() {
         binding.topBar.title = "홈"
-        val profileList = mutableListOf<Profile>(
-            Profile(
-                name = "나(엄마)",
-                img = requireContext().getDrawable(com.core.common.R.drawable.img_mom)!!,
-                selected = true
-            ),
-            Profile(
-                name = "우리딸",
-                img = requireContext().getDrawable(com.core.common.R.drawable.img_daughter)!!,
-                selected = false
-            ),
-            Profile(
-                name = "우리아들",
-                img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
-                selected = false
-            ),
-            Profile()
-        )
 
+        val profileList = profileList()
         binding.rvPeople.rv.adapter = ProfileAdapter(profileList) {clickedProfile ->
             Log.d(javaClass.name, "clicked : ${clickedProfile}")
             profileList.onEach {
                 it.selected = it.name == clickedProfile.name
             }
+        }
+
+        // 약 알람
+        binding.alarmCnt = 2
+        binding.rvAlarm.adapter = AlarmAdapter(viewModel.alarmList) {
+            //todo navigate
         }
     }
 
@@ -67,4 +57,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_homeFragment_to_createAlarmFragment)
     }
+
+    private fun profileList(): MutableList<Profile> = mutableListOf(
+        Profile(
+            name = "나(엄마)",
+            img = requireContext().getDrawable(com.core.common.R.drawable.img_mom)!!,
+            selected = true
+        ),
+        Profile(
+            name = "우리딸",
+            img = requireContext().getDrawable(com.core.common.R.drawable.img_daughter)!!,
+            selected = false
+        ),
+        Profile(
+            name = "우리아들",
+            img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
+            selected = false
+        ),
+        Profile()
+    )
+
 }
