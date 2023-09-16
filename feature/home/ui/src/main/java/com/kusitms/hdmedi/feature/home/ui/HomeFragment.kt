@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.core.common.BaseFragment
 import com.core.common.adapter.AlarmAdapter
 import com.core.common.adapter.ProfileAdapter
 import com.core.common.model.Profile
+import com.kusitms.hdmedi.feature.home.ui.adapter.WeekDateAdapter
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentHomeBinding
+import com.kusitms.hdmedi.feature.home.ui.util.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +41,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
 
         // 달력
+        binding.rvWeek.bringToFront()
+        val gridLayoutManager = GridLayoutManager(context, 7)
+        binding.rvWeek.layoutManager = gridLayoutManager
+        binding.rvWeek.adapter = WeekDateAdapter(DateUtil.getCurrentWeek()) {
+
+        }
 
 
         // 약 알람

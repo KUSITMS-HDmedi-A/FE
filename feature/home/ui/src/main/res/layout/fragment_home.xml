@@ -85,15 +85,17 @@
             android:paddingVertical="@dimen/padding_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/space"
-            tools:listitem="@layout/item_weekdate" />
+            tools:listitem="@layout/item_weekdate"
+            tools:itemCount="7"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/sky_blue"
-            app:layout_constraintTop_toBottomOf="@id/space"
+            app:layout_constraintTop_toBottomOf="@id/rv_week"
             app:layout_constraintBottom_toBottomOf="parent"
             />
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
