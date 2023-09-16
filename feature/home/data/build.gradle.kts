@@ -39,6 +39,7 @@ dependencies {
 
     implementation(project(":feature:home:domain"))
     implementation(project(":core:network"))
+    implementation(project(":core:common"))
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
