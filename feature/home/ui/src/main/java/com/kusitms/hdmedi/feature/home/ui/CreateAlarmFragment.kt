@@ -1,11 +1,6 @@
 package com.kusitms.hdmedi.feature.home.ui
 
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +8,7 @@ import com.core.common.BaseFragment
 import com.core.common.adapter.ProfileAdapter
 import com.core.common.model.Profile
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentCreateAlarmBinding
+import com.kusitms.hdmedi.feature.home.ui.util.BottomSheetCalendarDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +24,16 @@ class CreateAlarmFragment :
     override fun viewCreated() {
         binding.lifecycleOwner = this
         initView()
+        bindingVm()
+    }
+
+    private fun bindingVm(){
+        viewModel.rangeDate.observe(viewLifecycleOwner){
+            if (it != null){
+                binding.layoutStart.date = it.startDateUI
+                binding.layoutEnd.date = it.endDateUI
+            }
+        }
     }
 
     private fun initView() {
@@ -58,11 +64,23 @@ class CreateAlarmFragment :
 
         // 기간 선택
         binding.layoutEnd.tvLabel.text = getString(R.string.end)
+        binding.clSelectPeriod.setOnClickListener {
+            createBottomSheetCalendar()
+        }
+
+        // 알람 시간 선택
 
         // 요일 선택
         binding.btnEveryday.tvTitle.text = getString(R.string.everyday)
         binding.btnWeekday.tvTitle.text = getString(R.string.weekday)
         binding.btnWeekend.tvTitle.text = getString(R.string.weekend)
+    }
+
+    private fun createBottomSheetCalendar() {
+        val bottomCalendarDialog = BottomSheetCalendarDialog { st, en ->
+            viewModel.updateRangeDate(st, en)
+        }
+        bottomCalendarDialog.show(childFragmentManager, bottomCalendarDialog.tag)
     }
 
     private fun profileList(): MutableList<Profile> = mutableListOf(
