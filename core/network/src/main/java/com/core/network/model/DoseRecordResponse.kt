@@ -22,6 +22,6 @@ data class DoseAlarm(
     val count: Int,
     val doseSign: Boolean,
     val label: String,
-    val record: String,
+    val record: String?,
     val time: String
 )

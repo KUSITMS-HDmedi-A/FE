@@ -34,6 +34,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private fun bindingVm() {
         viewModel.selectedWeekDate.observe(viewLifecycleOwner) {
             Log.d(javaClass.name, "selectedDate changed : ${it.date}")
+            viewModel.getAlarmList()
+        }
+        viewModel.selectedName.observe(viewLifecycleOwner) {
+            Log.d(javaClass.name, "selectedName changed : ${it}")
+            viewModel.getAlarmList()
         }
     }
 
@@ -41,11 +46,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.topBar.title = "홈"
 
         val profileList = profileList()
+        viewModel.updateSelectedName(profileList[0].name!!)
         binding.rvPeople.rv.adapter = ProfileAdapter(profileList) { clickedProfile ->
             Log.d(javaClass.name, "clicked : ${clickedProfile}")
-            profileList.onEach {
-                it.selected = it.name == clickedProfile.name
-            }
+            viewModel.updateSelectedName(clickedProfile.name!!)
         }
 
         // 달력
@@ -89,7 +93,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             selected = false
         ),
         Profile(
-            name = "우리아들",
+            name = "이이",
             img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
             selected = false
         ),
