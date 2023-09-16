@@ -32,4 +32,9 @@ object DateUtil {
         Log.d(javaClass.name, "${weekDates}")
         return weekDates.toList()
     }
+
+    fun getTodayWeekDate(): WeekDate {
+        val today = Calendar.getInstance().time
+        return WeekDate(date = dateFormat.format(today), korDay = korDayFormat.format(today), engDay = korDayFormat.format(today))
+    }
 }

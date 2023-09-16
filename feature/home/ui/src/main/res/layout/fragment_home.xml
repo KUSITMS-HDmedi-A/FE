@@ -83,10 +83,13 @@
             android:overScrollMode="never"
             android:paddingHorizontal="@dimen/padding_default"
             android:paddingVertical="@dimen/padding_content"
+            android:layout_marginStart="2dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:listitem="@layout/item_weekdate"
-            tools:itemCount="7"/>
+            tools:itemCount="7" />
 
         <View
             android:layout_width="match_parent"

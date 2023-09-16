@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.core.common.BaseFragment
 import com.core.common.adapter.AlarmAdapter
 import com.core.common.adapter.ProfileAdapter
@@ -27,6 +28,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.lifecycleOwner = this
         initView()
         setOnClickListener()
+        bindingVm()
+    }
+
+    private fun bindingVm(){
+        viewModel.selectedWeekDate.observe(viewLifecycleOwner) {
+            Log.d(javaClass.name, "selectedDate changed : ${it.date}")
+        }
     }
 
     private fun initView() {
@@ -45,9 +53,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val gridLayoutManager = GridLayoutManager(context, 7)
         binding.rvWeek.layoutManager = gridLayoutManager
         binding.rvWeek.adapter = WeekDateAdapter(DateUtil.getCurrentWeek()) {
-
+            viewModel.updateSelectedDate(it)
         }
-
 
         // 약 알람
         binding.alarmCnt = 2

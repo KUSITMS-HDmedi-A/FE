@@ -10,10 +10,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="32dp"
+        android:layout_width="34dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_r4"
-        android:paddingVertical="2dp"
+        android:paddingVertical="4dp"
         android:backgroundTint="@{weekDate.isSelected ? @color/sky_blue_bg : @color/white, default = @color/white}">
 
         <TextView
