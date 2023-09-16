@@ -86,12 +86,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
-                android:background="@drawable/bg_medicine_selector"
+                android:background="@{alarm.isDone ? @drawable/bg_r4_sky_blue : @drawable/bg_r4_gray}"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{alarm.isDone()== true ? @string/complete_take : @string/before_take, default = @string/before_take}"
+                    android:text="@{alarm.isDone == true ? @string/complete_take : @string/before_take, default = @string/before_take}"
                     android:textColor="@color/txt_isdone_selector"
                     android:textFontWeight="700"
                     android:textSize="11sp"

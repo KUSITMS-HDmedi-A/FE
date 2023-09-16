@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(
                 val selected = it.filter { profileAlarmList ->
                     profileAlarmList.name == name
                 }
-                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList else listOf()
+                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList.sorted() else listOf()
             }
         }
     }

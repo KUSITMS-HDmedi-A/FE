@@ -15,8 +15,12 @@ class AlarmAdapter(private var list: List<Alarm>, private val onClick: (Alarm) -
                 alarm = alarmData
 
                 btnCheck.setOnClickListener {
+                    val idx = list.indexOf(alarmData)
                     alarmData.isDone = !alarmData.isDone
+                    notifyItemChanged(idx)
                 }
+
+                root.setOnClickListener { onClick }
             }
         }
     }
