@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.viewModels
 import com.core.common.BaseFragment
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentCreateAlarmBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CreateAlarmFragment :
     BaseFragment<FragmentCreateAlarmBinding>(R.layout.fragment_create_alarm) {
+
+    val viewModel: CreateAlarmViewModel by viewModels()
+
     override fun createView(binding: FragmentCreateAlarmBinding) {
 
     }
