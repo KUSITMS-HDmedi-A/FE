@@ -201,19 +201,20 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
         
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_alarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_alarm_circle"
-            android:background="@color/transparent"
+            android:src="@drawable/ic_alarm"
+            android:backgroundTint="@color/main_blue"
             android:scaleType="center"
             android:elevation="10dp"
             android:layout_margin="@dimen/padding_default"
             android:contentDescription="@string/add_alarm"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            app:tint="@color/white"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
