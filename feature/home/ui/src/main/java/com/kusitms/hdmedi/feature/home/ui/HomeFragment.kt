@@ -2,10 +2,11 @@ package com.kusitms.hdmedi.feature.home.ui
 
 import android.util.Log
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavGraph
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.ItemTouchHelper
 import com.core.common.BaseFragment
 import com.core.common.adapter.AlarmAdapter
 import com.core.common.adapter.ProfileAdapter
@@ -92,9 +93,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             javaClass.name,
             "currentDestination : ${findNavController().currentDestination?.id == R.id.homeFragment}"
         )
-        if (findNavController().currentDestination?.id == R.id.homeFragment)
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_homeFragment_to_createAlarmFragment)
+        findNavController().navigateSafe(HomeFragmentDirections.actionHomeFragmentToCreateAlarmFragment())
+
     }
 
     private fun profileList(): MutableList<Profile> = mutableListOf(
@@ -104,16 +104,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             selected = true
         ),
         Profile(
-            name = "우리딸",
+            name = "김리아(딸)",
             img = requireContext().getDrawable(com.core.common.R.drawable.img_daughter)!!,
             selected = false
         ),
         Profile(
-            name = "이이",
+            name = "김리준(아들)",
             img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
             selected = false
         ),
         Profile()
     )
+
+    fun NavController.navigateSafe(directions: NavDirections) {
+        // Get action by ID. If action doesn't exist on current node, return.
+        val action = (currentDestination ?: graph).getAction(directions.actionId) ?: return
+        var destId = action.destinationId
+        val dest = graph.findNode(destId)
+        if (dest is NavGraph) {
+            // Action destination is a nested graph, which isn't a real destination.
+            // The real destination is the start destination of that graph so resolve it.
+            destId = dest.startDestinationId
+        }
+        if (currentDestination?.id != destId) {
+            navigate(directions)
+        }
+    }
 
 }
