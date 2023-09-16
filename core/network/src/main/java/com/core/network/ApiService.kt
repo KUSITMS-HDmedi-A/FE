@@ -2,6 +2,7 @@ package com.core.network
 
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
+import com.core.network.model.DoseRecordResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -13,6 +14,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     /**
@@ -49,6 +51,12 @@ interface ApiService {
     suspend fun getMedicines(): MedicineListResponse
 
     /**
+     * child medicine
+     */
+    @GET("/api/child-medicine/dose-record/{todayDate}")
+    suspend fun getDoseRecords(@Path("todayDate") todayDate: String): DoseRecordResponse
+
+    /**
      * fcm
      */
     @POST("/api/notification")
@@ -56,4 +64,8 @@ interface ApiService {
 
     @PATCH("/api/notification/token")
     suspend fun pathFCMToken(@Body fcmTokenRequest: FcmTokenRequest): idResponse
+
+    /**
+     * user (home)
+     */
 }

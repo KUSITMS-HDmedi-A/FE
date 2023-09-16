@@ -3,6 +3,7 @@ package com.core.network.datasource
 import com.core.network.ApiService
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
+import com.core.network.model.Character
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -38,6 +39,13 @@ class NetworkDataSourceImpl @Inject constructor(
 
     override suspend fun getMedicines(): MedicineListResponse =
         networkApi.getMedicines()
+
+    /**
+     * child-medicine
+     */
+    override suspend fun getDoseRecords(todayDate: String): List<Character> =
+        networkApi.getDoseRecords(todayDate= todayDate).characterList
+
 
     /**
      * fcm

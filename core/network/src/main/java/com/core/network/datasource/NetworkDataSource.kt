@@ -2,6 +2,8 @@ package com.core.network.datasource
 
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
+import com.core.network.model.Character
+import com.core.network.model.DoseRecordResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -10,6 +12,7 @@ import com.core.network.model.Response
 import com.core.network.model.TokenResponse
 import com.core.network.model.idResponse
 import retrofit2.http.Body
+import retrofit2.http.Path
 
 interface NetworkDataSource {
 
@@ -40,9 +43,14 @@ interface NetworkDataSource {
     suspend fun getMedicines(): MedicineListResponse
 
     /**
+     * child-medicine
+     */
+    suspend fun getDoseRecords(todayDate: String): List<Character>
+
+    /**
      * fcm
      */
-    suspend fun sendNotification(@Body notificationRequest: NotificationRequest): idResponse
+    suspend fun sendNotification(notificationRequest: NotificationRequest): idResponse
 
-    suspend fun pathFCMToken(@Body fcmTokenRequest: FcmTokenRequest): idResponse
+    suspend fun pathFCMToken(fcmTokenRequest: FcmTokenRequest): idResponse
 }
