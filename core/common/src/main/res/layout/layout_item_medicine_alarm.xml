@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="isCompleted"
-            type="Boolean" />
+            name="alarm"
+            type="com.core.common.model.Alarm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,21 +21,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/btn_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_check_circle_selector"
+                android:background="@drawable/btn_check_circle_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:checked="@{alarm.isDone()==true}"/>
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_content"
-                android:text="9:00"
+                android:text="@{alarm.time}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -49,7 +49,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_content"
-                android:text="빈 속에 먹으면 안됨. 꼭 아침 먹이고!"
+                android:text="@{alarm.label}"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="12sp"
@@ -70,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6알"
+                android:text="@{@string/medicine_cnt(alarm.medicineCnt)}"
                 android:textColor="@color/gray_txt"
                 android:textFontWeight="500"
                 android:textSize="10sp" />
@@ -84,10 +86,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="복용 전"
-                    android:textColor="@color/gray_txt"
+                    android:text="@{alarm.isDone()== true ? @string/complete_take : @string/before_take, default = @string/before_take}"
+                    android:textColor="@color/txt_isdone_selector"
                     android:textFontWeight="600"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    />
             </LinearLayout>
 
         </LinearLayout>

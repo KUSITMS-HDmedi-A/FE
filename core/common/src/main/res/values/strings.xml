@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="description_btn">하단 버튼</string>
+    <string name="complete_take">복용 완료</string>
+    <string name="before_take">복용 전</string>
+    <string name="medicine_cnt">%d알</string>
 </resources>
