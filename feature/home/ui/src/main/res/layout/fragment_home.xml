@@ -154,7 +154,7 @@
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@drawable/img_mom" />
+                        app:showImageProfile="@{name}" />
 
                     <View
                         android:layout_width="3dp"
