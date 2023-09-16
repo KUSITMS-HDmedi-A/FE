@@ -37,6 +37,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         }
 
+        // 달력
+
+
         // 약 알람
         binding.alarmCnt = 2
         binding.rvAlarm.adapter = AlarmAdapter(viewModel.alarmList) {
