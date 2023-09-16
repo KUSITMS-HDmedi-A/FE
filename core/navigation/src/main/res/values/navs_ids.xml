@@ -2,4 +2,5 @@
 <resources>
     <item name="signin_nav_graph" type="id"/>
     <item name="bottom_nav_graph" type="id"/>
+    <item name="home_navigation" type="id"/>
 </resources>

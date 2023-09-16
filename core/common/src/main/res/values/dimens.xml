@@ -2,4 +2,7 @@
 <resources>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_bottom">32dp</dimen>
+    <dimen name="padding_default">20dp</dimen>
+    <dimen name="padding_content">12dp</dimen>
+    <dimen name="padding_content2">16dp</dimen>
 </resources>

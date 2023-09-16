@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isSelected"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_skyblue_selector">
+
+        <TextView
+            android:id="@+id/tv_str_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            android:textColor="@{isSelected ? @color/main_blue : @color/gray_txt , default = @color/gray_txt}"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="금" />
+
+        <TextView
+            android:id="@+id/tv_num_day"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            android:textColor="@{isSelected ? @color/main_blue : @color/black , default = @color/black}"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_str_day"
+            tools:text="13" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
