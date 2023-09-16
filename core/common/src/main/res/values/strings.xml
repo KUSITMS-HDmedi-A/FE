@@ -4,4 +4,5 @@
     <string name="complete_take">복용완료</string>
     <string name="before_take">복용전</string>
     <string name="medicine_cnt">%d알</string>
+    <string name="empty_alarm">알람이 없습니다</string>
 </resources>

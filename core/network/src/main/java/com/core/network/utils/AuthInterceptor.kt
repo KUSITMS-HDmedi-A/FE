@@ -17,7 +17,8 @@ class AuthInterceptor @Inject constructor(
             tokenDataStore.getToken()
         } ?: return errorResponse(chain.request())
 
-        val request = chain.request().newBuilder().header(AUTHORIZATION, "Bearer $token").build()
+        val testToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOiJVU0VSIiwiaWF0IjoxNjk0NTk4NzI2LCJleHAiOjE2OTcxOTA3MjZ9.XldOEKUVhwMu_57zZbQ2TPyVmX5nAAvQbx4IZCQL8dA"
+        val request = chain.request().newBuilder().header(AUTHORIZATION, "Bearer $testToken").build()
         return chain.proceed(request)
     }
 

@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="alarmCnt"
             type="int" />
+        <variable
+            name="name"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,7 +163,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="나(엄마)"
+                        android:text="@{name}"
                         android:textColor="@color/black"
                         android:textFontWeight="500"
                         android:textSize="14sp" />
@@ -175,7 +179,24 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/layout_item_medicine_alarm" />
+                    tools:listitem="@layout/layout_item_medicine_alarm"
+                    android:visibility="@{alarmCnt != 0 ? View.VISIBLE : View.GONE}"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:background="@drawable/bg_r6"
+                    android:gravity="center"
+                    android:visibility="@{alarmCnt == 0 ? View.VISIBLE : View.GONE}">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_alarm"
+                        android:textSize="16sp"
+                        android:textFontWeight="500"
+                        android:textColor="#C1C1C1"/>
+                </LinearLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

@@ -20,12 +20,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    lateinit var alarmAdapter: AlarmAdapter
+
     override fun createView(binding: FragmentHomeBinding) {
 
     }
 
     override fun viewCreated() {
         binding.lifecycleOwner = this
+        setAdapter()
         initView()
         setOnClickListener()
         bindingVm()
@@ -38,7 +41,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
         viewModel.selectedName.observe(viewLifecycleOwner) {
             Log.d(javaClass.name, "selectedName changed : ${it}")
+            binding.name = it
             viewModel.getAlarmList()
+        }
+
+        viewModel.selectedAlarmList.observe(viewLifecycleOwner) {
+            Log.d(javaClass.name, "selectedAlarmList changed : ${it}")
+            if (::alarmAdapter.isInitialized) {
+                alarmAdapter.updateList(it)
+                binding.alarmCnt = it.size
+            }
         }
     }
 
@@ -61,8 +73,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
 
         // 약 알람
-        binding.alarmCnt = 2
-        binding.rvAlarm.adapter = AlarmAdapter(viewModel.alarmList) {
+        binding.rvAlarm.adapter = alarmAdapter
+    }
+
+    private fun setAdapter(){
+        binding.alarmCnt = viewModel.alarmList.size
+        alarmAdapter = AlarmAdapter(viewModel.alarmList) {
             //todo navigate
         }
     }
