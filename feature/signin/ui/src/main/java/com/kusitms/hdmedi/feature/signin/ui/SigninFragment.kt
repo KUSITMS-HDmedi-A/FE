@@ -64,6 +64,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_sig
         }
 
         binding.btnKakaoLogin.btn.setOnClickListener {
+            Log.d(javaClass.name, "click 카카오 로그인")
             kakaoLogin { isSuccess, msg ->
                 if (isSuccess) {
                     Log.i(requireContext().toString(), "카카오 로그인 성공 $msg")
@@ -81,6 +82,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_sig
             }
         } else {
             UserApiClient.instance.loginWithKakaoAccount(requireContext()) { token, error ->
+                Log.d(javaClass.name,"loginWithKakaoAccount : ${token?.accessToken}")
                 if (error != null) isSuccess(false, error.toString())
                 else if (token != null) isSuccess(true, token.accessToken)
             }

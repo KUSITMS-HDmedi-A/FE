@@ -17,8 +17,9 @@ class SigninRepositoryImpl @Inject constructor(
     private val tokenSource: TokenDataStore,
     private val sharedPreferences: SharedPreferenceManager
 ): SigninRepository {
-    override suspend fun saveSocialToken(token: String): Flow<String?> {
-        return tokenSource.getSocialToken().flowOn(Dispatchers.IO)
+    override suspend fun saveAccessToken(token: String): Flow<String?> {
+        tokenSource.saveAccessToken(token)
+        return tokenSource.getAccessToken().flowOn(Dispatchers.IO)
     }
 
     override suspend fun requestLogin(): Flow<Tokens> =
@@ -27,7 +28,6 @@ class SigninRepositoryImpl @Inject constructor(
     override suspend fun saveJwtTokens(accessToken: String, refreshToken: String): Flow<String?> {
         tokenSource.saveAccessToken(accessToken)
         tokenSource.saveRefreshToken(refreshToken)
-        tokenSource.deleteSocialToken()
         return tokenSource.getAccessToken().flowOn(Dispatchers.IO)
     }
 
