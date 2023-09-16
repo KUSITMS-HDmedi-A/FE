@@ -31,7 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         bindingVm()
     }
 
-    private fun bindingVm(){
+    private fun bindingVm() {
         viewModel.selectedWeekDate.observe(viewLifecycleOwner) {
             Log.d(javaClass.name, "selectedDate changed : ${it.date}")
         }
@@ -41,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.topBar.title = "홈"
 
         val profileList = profileList()
-        binding.rvPeople.rv.adapter = ProfileAdapter(profileList) {clickedProfile ->
+        binding.rvPeople.rv.adapter = ProfileAdapter(profileList) { clickedProfile ->
             Log.d(javaClass.name, "clicked : ${clickedProfile}")
             profileList.onEach {
                 it.selected = it.name == clickedProfile.name
