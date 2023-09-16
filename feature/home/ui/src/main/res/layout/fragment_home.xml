@@ -87,6 +87,14 @@
             app:layout_constraintTop_toBottomOf="@id/space"
             tools:listitem="@layout/item_day_of_week" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/sky_blue"
+            app:layout_constraintTop_toBottomOf="@id/space"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +103,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/sky_blue"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_default">
 
@@ -168,13 +175,15 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
         
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/fab_alarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/ic_alarm_circle"
+            android:background="@color/transparent"
+            android:elevation="8dp"
             android:scaleType="center"
             app:fabSize="mini"
             android:layout_margin="@dimen/padding_default"
