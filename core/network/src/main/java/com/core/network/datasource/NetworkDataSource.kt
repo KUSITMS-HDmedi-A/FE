@@ -1,7 +1,7 @@
 package com.core.network.datasource
 
 import com.core.network.model.AddAlarmRequest
-import com.core.network.model.CharacterData
+import com.core.network.model.AlarmAddResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -22,7 +22,7 @@ interface NetworkDataSource {
      */
     suspend fun postAlarm(alarmRequest: AddAlarmRequest): Response
 
-    suspend fun getAddAlarmData(): List<CharacterData>
+    suspend fun getAddAlarmData(): AlarmAddResponse
 
     /**
      * auth (회원)

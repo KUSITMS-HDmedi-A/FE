@@ -3,7 +3,6 @@ package com.core.network.datasource
 import com.core.network.ApiService
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
-import com.core.network.model.CharacterData
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -11,8 +10,6 @@ import com.core.network.model.NotificationRequest
 import com.core.network.model.Response
 import com.core.network.model.TokenResponse
 import com.core.network.model.idResponse
-import retrofit2.http.Body
-import retrofit2.http.PATCH
 import javax.inject.Inject
 
 class NetworkDataSourceImpl @Inject constructor(
@@ -24,8 +21,8 @@ class NetworkDataSourceImpl @Inject constructor(
     override suspend fun postAlarm(alarmRequest: AddAlarmRequest): Response =
         networkApi.postAlarm(alarmRequest)
 
-    override suspend fun getAddAlarmData(): List<CharacterData> =
-        networkApi.getAddAlarmData().characterData
+    override suspend fun getAddAlarmData(): AlarmAddResponse =
+        networkApi.getAddAlarmData()
 
     /**
      * auth
