@@ -1,6 +1,7 @@
 package com.kusitms.hdmedi.feature.home.ui
 
 import android.util.Log
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.core.common.BaseFragment
@@ -11,6 +12,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+
+    private val viewModel: HomeViewModel by viewModels()
+
     override fun createView(binding: FragmentHomeBinding) {
 
     }

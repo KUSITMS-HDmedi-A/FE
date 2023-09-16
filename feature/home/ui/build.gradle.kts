@@ -47,6 +47,7 @@ dependencies {
 
     implementation(project(":core:common"))
     implementation(project(":feature:home:domain"))
+    implementation(project(":feature:home:data"))
 
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
