@@ -36,11 +36,9 @@ interface ApiService {
     /**
      * medicine
      */
-
-    //todo 임의로 한 것 (진짜 아님)
-    @GET("")
-    suspend fun getMedicines(): MedicineListResponse
     @POST("/api/child-medicine/enroll-medicine")
     fun enrollMedicine(@Header("Authorization") token: String, @Body medicine: EnrollMedicineRequest) : Call<Response>
-    
+
+    @GET("/api/child-medicine/medicine-manage")
+    fun getMedicineManagement(@Header("Authorization") token: String): Call<MedicineListResponse>
 }
