@@ -20,8 +20,8 @@ class AlarmAdapter(private var list: List<Alarm>, private val onClick: (Alarm) -
                     val idx = list.indexOf(alarmData)
                     alarmData.isDone = !alarmData.isDone
                     notifyItemChanged(idx)
-                    val percent = list.filter { it.isDone }.size / list.size * 100
-                    Snackbar.make(binding.root.context, binding.root, "💊오늘 목표 ${percent}%를 달성했어요.", Snackbar.LENGTH_SHORT).show()
+                    val percent = list.filter { it.isDone }.size / list.size.toDouble() * 100
+                    Snackbar.make(binding.root.context, binding.root, "💊오늘 목표 ${String.format("%.1f", percent)}%를 달성했어요.", Snackbar.LENGTH_SHORT).show()
                 }
 
                 root.setOnClickListener { onClick }
