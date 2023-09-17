@@ -46,6 +46,7 @@ class CreateAlarmFragment :
                 label = binding.etLabel.text.toString()
             )
             Log.d(javaClass.name, "${binding.autoTv.text}, ${binding.timePicker.hour}, ${binding.timePicker.minute}, ${binding.etLabel.text}")
+            findNavController().popBackStack()
         }
     }
 

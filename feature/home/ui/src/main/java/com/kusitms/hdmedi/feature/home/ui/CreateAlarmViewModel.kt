@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.kusitms.hdmedi.feature.home.domain.HomeRepository
 import com.kusitms.hdmedi.feature.home.domain.model.AddAlarmInfo
 import com.kusitms.hdmedi.feature.home.ui.model.RangeDate
-import com.kusitms.hdmedi.feature.home.ui.util.DateUtil
+import com.core.common.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.Date

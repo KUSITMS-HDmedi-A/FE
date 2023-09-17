@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.Navigation
@@ -16,13 +17,18 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kusitms.hdmedi.ui.databinding.FragmentMedicineBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MedicineFragment : Fragment() {
+
+    private val medicineViewModel: MedicineViewModel by viewModels()
 
     lateinit var fragmentMedicineBinding: FragmentMedicineBinding
 
     lateinit var navController: NavController
 
+    lateinit var historyFragment: HistoryFragment
 
     val fragmentList = mutableListOf<Fragment>()
 
@@ -42,9 +48,12 @@ class MedicineFragment : Fragment() {
                 title = "약관리"
             }
 
+
+            historyFragment = HistoryFragment(viewModel = medicineViewModel)
+
             fragmentList.clear()
             fragmentList.add(MedicineManagementFragment())
-            fragmentList.add(MedicineManagementFragment())
+            fragmentList.add(historyFragment)
 
             pagerTabMedicine.setUserInputEnabled(false)
             pagerTabMedicine.adapter = TabAdapterClass(this@MedicineFragment)
@@ -63,6 +72,8 @@ class MedicineFragment : Fragment() {
     // onViewCreated : 뷰를 그리고 나서 실행
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         navController = Navigation.findNavController(view)
         fragmentMedicineBinding.run {
             // id클릭시 네비게이션 이동
@@ -77,7 +88,7 @@ class MedicineFragment : Fragment() {
         super.onResume()
         fragmentList.clear()
         fragmentList.add(MedicineManagementFragment())
-        fragmentList.add(MedicineManagementFragment())
+        fragmentList.add(historyFragment)
         fragmentMedicineBinding.pagerTabMedicine.requestLayout()
     }
 

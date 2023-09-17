@@ -6,7 +6,7 @@
     <data>
         <variable
             name="weekDate"
-            type="com.kusitms.hdmedi.feature.home.ui.model.WeekDate" />
+            type="com.core.common.model.WeekDate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

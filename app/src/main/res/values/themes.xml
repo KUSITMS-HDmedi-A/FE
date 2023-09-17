@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.HDmedi" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/main_blue</item>
+        <item name="colorPrimary">@color/main_blue</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
     <style name="Theme.HDmedi" parent="Base.Theme.HDmedi" />

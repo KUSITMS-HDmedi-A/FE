@@ -13,7 +13,7 @@ import com.core.common.adapter.ProfileAdapter
 import com.core.common.model.Profile
 import com.kusitms.hdmedi.feature.home.ui.adapter.WeekDateAdapter
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentHomeBinding
-import com.kusitms.hdmedi.feature.home.ui.util.DateUtil
+import com.core.common.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +32,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         setAdapter()
         initView()
         setOnClickListener()
+        bindingVm()
+    }
+
+    override fun onResume() {
+        super.onResume()
         bindingVm()
     }
 
@@ -109,7 +114,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             selected = false
         ),
         Profile(
-            name = "김리준",
+            name = "김리준(아들)",
             img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
             selected = false
         ),

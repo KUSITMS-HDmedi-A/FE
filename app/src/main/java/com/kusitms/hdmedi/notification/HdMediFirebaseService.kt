@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
@@ -48,6 +49,7 @@ class HdMediFirebaseService : FirebaseMessagingService() {
 
     private fun notificationBuilder(title: String, body: String, pendingIntent: PendingIntent) =
         NotificationCompat.Builder(this, CHANNEL_ID)
+            .setLargeIcon(BitmapFactory.decodeResource(resources, com.kusitms.hdmedi.feature.signin.ui.R.drawable.img_logo))
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setContentText(body)
