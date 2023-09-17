@@ -59,7 +59,7 @@ class HistoryFragment(
         // 약
         binding.rvHistory.adapter = historyAdapter
         binding.alarmCnt = historyAdapter.itemCount
-        binding.name = "엄마(나)"
+        binding.name = "김리아(딸)"
     }
 
     private fun setAdapter(){
