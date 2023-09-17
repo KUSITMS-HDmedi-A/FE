@@ -53,6 +53,14 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
+    implementation(project(":feature:medicine:domain"))
+    implementation(project(":feature:medicine:data"))
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.calendar)
+
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

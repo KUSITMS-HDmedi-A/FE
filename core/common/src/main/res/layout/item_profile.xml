@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="name"
-            type="String" />
+            name="profile"
+            type="com.core.common.model.Profile" />
     </data>
 
     <LinearLayout
@@ -20,7 +20,6 @@
             android:id="@+id/cl_circle"
             android:layout_width="58dp"
             android:layout_height="58dp"
-            android:background="@drawable/bg_profile_selector"
             android:layout_gravity="center_horizontal">
 
             <ImageView
@@ -46,7 +45,8 @@
             android:textSize="11sp"
             android:textFontWeight="400"
             android:layout_gravity="center"
-            android:text="@{name}"/>
+            android:textColor="@{profile.selected ? @color/main_blue : @color/gray_dark_txt}"
+            android:text="@{profile.name}"/>
 
     </LinearLayout>
 </layout>

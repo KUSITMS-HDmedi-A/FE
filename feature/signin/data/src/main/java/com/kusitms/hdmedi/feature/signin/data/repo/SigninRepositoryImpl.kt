@@ -3,6 +3,7 @@ package com.kusitms.hdmedi.feature.signin.data.repo
 import android.content.SharedPreferences
 import com.core.common.SharedPreferenceManager
 import com.core.network.datasource.NetworkDataSource
+import com.core.network.model.FcmTokenRequest
 import com.core.network.utils.TokenDataStore
 import com.kusitms.hdmedi.feature.signin.data.mapper.toDomainTokens
 import com.kusitms.hdmedi.feature.signin.domain.model.Tokens
@@ -33,5 +34,9 @@ class SigninRepositoryImpl @Inject constructor(
 
     override fun getFCMToken(): String? {
         return sharedPreferences.getFCMToken()
+    }
+
+    override suspend fun sendFCMToken(token: String) {
+        dataSource.pathFCMToken(FcmTokenRequest(token))
     }
 }

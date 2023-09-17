@@ -15,6 +15,8 @@
         app:destination="@id/bottom_nav_graph"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="false"
         />
     <include app:graph="@navigation/search_navigation" />
 

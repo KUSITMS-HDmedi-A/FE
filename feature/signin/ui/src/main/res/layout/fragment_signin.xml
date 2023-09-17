@@ -17,9 +17,11 @@
             android:textColor="@color/main_blue"
             android:textFontWeight="600"
             android:textSize="20sp"
+            android:includeFontPadding="false"
             app:layout_constraintBottom_toTopOf="@+id/iv_logo"
             app:layout_constraintEnd_toEndOf="@id/iv_logo"
-            app:layout_constraintStart_toStartOf="@id/iv_logo" />
+            app:layout_constraintStart_toStartOf="@id/iv_logo"
+            android:layout_marginBottom="-10dp"/>
 
         <ImageView
             android:id="@+id/iv_logo"

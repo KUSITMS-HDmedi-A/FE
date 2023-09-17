@@ -8,4 +8,5 @@ interface SigninRepository {
     suspend fun requestLogin(): Flow<Tokens>
     suspend fun saveJwtTokens(accessToken: String, refreshToken: String): Flow<String?>
     fun getFCMToken(): String?
+    suspend fun sendFCMToken(tokens: String)
 }
