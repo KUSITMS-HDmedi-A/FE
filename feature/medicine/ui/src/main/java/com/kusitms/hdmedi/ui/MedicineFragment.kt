@@ -35,7 +35,6 @@ class MedicineFragment : Fragment() {
     private val medicineViewModel: MedicineViewModel by viewModels()
 
     lateinit var fragmentMedicineBinding: FragmentMedicineBinding
-    lateinit var fragmentMedicineManagementBinding: FragmentMedicineManagementBinding
 
     lateinit var navController: NavController
 
@@ -74,7 +73,6 @@ class MedicineFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentMedicineBinding = FragmentMedicineBinding.inflate(inflater)
-        fragmentMedicineManagementBinding = FragmentMedicineManagementBinding.inflate(inflater)
         viewModel = ViewModelProvider(requireActivity())[MedicineViewModel::class.java]
         viewModel.run {
             characterMedicineList.observe(requireActivity()) {
@@ -158,7 +156,6 @@ class MedicineFragment : Fragment() {
                 rowBinding.root.setOnClickListener {
                     onClickPosition = adapterPosition
                     fragmentMedicineBinding.pagerTabMedicine.requestLayout()
-                    fragmentMedicineManagementBinding.recyclerViewMedicineManagement.adapter?.notifyDataSetChanged()
                     fragmentMedicineBinding.recyclerViewMedicinePeople.adapter?.notifyDataSetChanged()
                 }
             }

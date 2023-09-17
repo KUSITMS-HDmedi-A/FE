@@ -66,6 +66,11 @@ class MedicineManagementFragment : Fragment() {
         return fragmentMedicineManagementBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        fragmentMedicineManagementBinding.recyclerViewMedicineManagement.adapter?.notifyDataSetChanged()
+    }
+
     inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolderClass>() {
         inner class ViewHolderClass(rowBinding: RowMedicineBinding) :
             RecyclerView.ViewHolder(rowBinding.root) {
