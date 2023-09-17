@@ -49,13 +49,13 @@ firebase-messaging = {group = "com.google.firebase", name = "firebase-messaging-
 glide = {group = "com.github.bumptech.glide", name = "glide", version.ref= "glide_version"}
 glide-compiler = {group = "com.github.bumptech.glide", name = "compiler", version.ref= "glide_version"}
 
-
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 com-google-dagger-hilt-android = {id = "com.google.dagger.hilt.android", version.ref = "hilt_version"}
 com-google-gms-google-services = {id = "com.google.gms.google-services", version.ref = "google-services"}
+navigation-safeargs = {id = "androidx.navigation.safeargs", version.ref = "nav_version"}
 
 [bundles]
 

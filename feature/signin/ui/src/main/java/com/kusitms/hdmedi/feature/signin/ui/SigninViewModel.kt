@@ -7,6 +7,7 @@ import com.core.common.Resource
 
 import com.kusitms.hdmedi.feature.signin.domain.repo.SigninRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ class SigninViewModel @Inject constructor(
                 withContext(Dispatchers.IO) {
                     signinRepository.saveJwtTokens(tokens.accessToken, tokens.refreshToken)
                         .collect {
-                            Log.d(javaClass.name, "jwtToken = ${tokens.accessToken==it} ")
+                            Log.d(javaClass.name, "jwtToken = ${tokens.accessToken == it} ")
                             if (tokens.accessToken == it)
                                 _stateHolder.value = Resource.success(true)
                         }
@@ -43,4 +44,12 @@ class SigninViewModel @Inject constructor(
         }
 
     }
+
+    fun sendFcmToken() {
+        CoroutineScope(Dispatchers.IO).launch {
+            if (fcm != null) signinRepository.sendFCMToken(fcm)
+        }
+    }
+
+
 }

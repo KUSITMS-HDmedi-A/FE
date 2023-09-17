@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     kotlin("kapt")
     alias(libs.plugins.com.google.dagger.hilt.android)
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -46,6 +47,8 @@ android {
 dependencies {
 
     implementation(project(":core:common"))
+    implementation(project(":feature:home:domain"))
+    implementation(project(":feature:home:data"))
 
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
@@ -55,6 +58,9 @@ dependencies {
 
     implementation(libs.navigation)
     implementation(libs.navigation.ui)
+
+    implementation(libs.calendar)
+
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
