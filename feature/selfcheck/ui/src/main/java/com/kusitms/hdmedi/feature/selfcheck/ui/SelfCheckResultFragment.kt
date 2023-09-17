@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.kusitms.hdmedi.feature.selfcheck.ui.databinding.FragmentSelfCheckResultBinding
@@ -15,12 +16,24 @@ class SelfCheckResultFragment : Fragment() {
 
     lateinit var navController: NavController
 
+    lateinit var viewModel: SelfCheckQuestionViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         fragmentSelfCheckResultBinding = FragmentSelfCheckResultBinding.inflate(inflater)
+
+        viewModel = ViewModelProvider(requireActivity())[SelfCheckQuestionViewModel::class.java]
+        viewModel.run {
+            scoreData.observe(requireActivity()) {
+                fragmentSelfCheckResultBinding.textViewSelfCheckResultScore.text = it.toString()
+            }
+            resultData.observe(requireActivity()) {
+                fragmentSelfCheckResultBinding.textViewSelfCheckResultContent.text = "ADHD 진단 결과, ${it.toString()}"
+            }
+        }
 
         fragmentSelfCheckResultBinding.run {
             toolbarSelfCheckResult.run {

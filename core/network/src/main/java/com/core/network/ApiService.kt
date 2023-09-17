@@ -3,6 +3,9 @@ package com.core.network
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
 import com.core.network.model.DoseRecordResponse
+import com.core.network.model.ADHDQuestionResponse
+import com.core.network.model.ADHDResultRequest
+import com.core.network.model.ADHDResultResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.FcmTokenRequest
 import com.core.network.model.MedicineListResponse
@@ -10,9 +13,11 @@ import com.core.network.model.NotificationRequest
 import com.core.network.model.Response
 import com.core.network.model.TokenResponse
 import com.core.network.model.idResponse
+import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -20,6 +25,11 @@ interface ApiService {
     /**
      * adhd 진단
      */
+    @GET("/api/adhd/test")
+    fun getAdhdQuestion(@Header("Authorization") token: String) : Call<ADHDQuestionResponse>
+
+    @POST("/api/adhd/test/result")
+    fun sendAdhdResult(@Header("Authorization") token: String, @Body result: ADHDResultRequest): Call<ADHDResultResponse>
 
     /**
      * alamm 알람
