@@ -36,10 +36,11 @@ interface ApiService {
     /**
      * medicine
      */
-    @POST("/api/medicine/enroll-medicine")
-    suspend fun enrollMedicine(@Body medicine: EnrollMedicineRequest) : Response
 
     //todo 임의로 한 것 (진짜 아님)
     @GET("")
     suspend fun getMedicines(): MedicineListResponse
+    @POST("/api/child-medicine/enroll-medicine")
+    fun enrollMedicine(@Header("Authorization") token: String, @Body medicine: EnrollMedicineRequest) : Call<Response>
+    
 }
