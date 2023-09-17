@@ -1,5 +1,6 @@
 package com.kusitms.hdmedi.feature.home.ui
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -53,7 +54,9 @@ class CreateAlarmViewModel @Inject constructor(
                     time = time,
                     label = label
                 )
-            )
+            ).collect{
+                Log.d(javaClass.name, "reponse: ${it.code}")
+            }
         }
     }
 

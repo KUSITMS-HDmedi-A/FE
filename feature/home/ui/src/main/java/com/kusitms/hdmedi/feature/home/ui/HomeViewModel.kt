@@ -49,14 +49,13 @@ class HomeViewModel @Inject constructor(
         val weekDate = selectedWeekDate.value!!
         val name = selectedName.value!!
         viewModelScope.launch {
-            //todo 돌려놓기
-//            homeRepository.getAlarmRecodes(weekDate.date).collect {
-//                Log.d(javaClass.name, "${it}")
-//                val selected = it.filter { profileAlarmList ->
-//                    profileAlarmList.name == name
-//                }
-//                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList.sorted() else listOf()
-//            }
+            homeRepository.getAlarmRecodes(weekDate.date).collect {
+                Log.d(javaClass.name, "${it}")
+                val selected = it.filter { profileAlarmList ->
+                    profileAlarmList.name == name
+                }
+                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList.sorted() else listOf()
+            }
         }
     }
 

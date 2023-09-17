@@ -59,11 +59,13 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>(R.layout.fragment_sig
 
     private fun initClickListener() {
         binding.btnEmailLogin.btn.setOnClickListener {
+            viewModel.sendFcmToken()
             navigateToBottomFlow()
         }
 
         binding.btnKakaoLogin.btn.setOnClickListener {
             Log.d(javaClass.name, "click 카카오 로그인")
+            viewModel.sendFcmToken()
             kakaoLogin { isSuccess, msg ->
                 if (isSuccess) {
                     Log.i(requireContext().toString(), "카카오 로그인 성공 $msg")

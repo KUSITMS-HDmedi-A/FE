@@ -61,6 +61,7 @@ class CreateAlarmFragment :
 
         // 사람 선택
         val profileList = profileList()
+        viewModel.updateSelectedName(profileList[0].name!!)
         binding.rvPeople.rv.adapter = ProfileAdapter(profileList) { clickedProfile ->
             Log.d(javaClass.name, "clicked : ${clickedProfile}")
             viewModel.updateSelectedName(clickedProfile.name!!)
