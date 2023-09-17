@@ -63,9 +63,8 @@ class SelfCheckFragment : Fragment() {
 
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             }
-            toolbarSelfCheck.run {
-                title = "자가진단"
-            }
+
+            topBarSelfCheck.mainHeaderTb.title = "자가진단"
         }
         return fragmentSelfCheckBinding.root
     }

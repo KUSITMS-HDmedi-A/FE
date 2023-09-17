@@ -8,12 +8,11 @@
     android:orientation="vertical"
     tools:context=".SelfCheckFragment" >
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarSelfCheck"
+    <include
+        android:id="@+id/topBarSelfCheck"
+        layout="@layout/layout_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"

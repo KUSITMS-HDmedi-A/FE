@@ -18,9 +18,7 @@ class SearchFragment : Fragment() {
         fragmentSearchBinding = FragmentSearchBinding.inflate(inflater)
 
         fragmentSearchBinding.run {
-            toolbarSearch.run {
-                title = "약검색"
-            }
+            topBarSearch.mainHeaderTb.title = "약검색"
         }
         return fragmentSearchBinding.root
     }

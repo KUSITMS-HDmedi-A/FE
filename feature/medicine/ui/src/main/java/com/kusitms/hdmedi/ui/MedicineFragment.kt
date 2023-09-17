@@ -38,9 +38,7 @@ class MedicineFragment : Fragment() {
         fragmentMedicineBinding = FragmentMedicineBinding.inflate(inflater)
 
         fragmentMedicineBinding.run {
-            toolbarMedicine.run {
-                title = "약관리"
-            }
+            topBarMedicine.mainHeaderTb.title = "약관리"
 
             fragmentList.clear()
             fragmentList.add(MedicineManagementFragment())
