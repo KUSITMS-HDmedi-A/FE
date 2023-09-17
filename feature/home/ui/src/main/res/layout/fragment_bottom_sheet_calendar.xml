@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_bottom_sheet_dialog">
 
     <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
@@ -12,6 +12,10 @@
         android:layout_marginTop="32dp"
         custom:default_date_color="@color/main_blue"
         custom:disable_date_color="#ABABAB"
+        custom:layout_constraintBottom_toBottomOf="parent"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toTopOf="parent"
         custom:range_color="@color/sky_blue"
         custom:range_date_color="@color/main_blue"
         custom:selected_date_circle_color="@color/main_blue"
@@ -19,11 +23,7 @@
         custom:text_size_title="18sp"
         custom:text_size_week="12sp"
         custom:title_color="@color/black"
-        custom:week_color="#FF7B7B7B"
-        custom:layout_constraintTop_toTopOf="parent"
-        custom:layout_constraintBottom_toBottomOf="parent"
-        custom:layout_constraintStart_toStartOf="parent"
-        custom:layout_constraintEnd_toEndOf="parent"/>
+        custom:week_color="#FF7B7B7B" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

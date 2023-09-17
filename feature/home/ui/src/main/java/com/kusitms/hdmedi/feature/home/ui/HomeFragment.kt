@@ -109,7 +109,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             selected = false
         ),
         Profile(
-            name = "김리준",
+            name = "김리준(아들)",
             img = requireContext().getDrawable(com.core.common.R.drawable.img_son)!!,
             selected = false
         ),
