@@ -1,18 +1,12 @@
 package com.kusitms.hdmedi.feature.home.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.core.common.model.Alarm
-import com.core.common.model.Profile
-import com.core.common.model.ProfileAlarmList
 import com.kusitms.hdmedi.feature.home.domain.HomeRepository
-import com.kusitms.hdmedi.feature.home.ui.model.WeekDate
-import com.kusitms.hdmedi.feature.home.ui.util.DateUtil
+import com.core.common.model.WeekDate
+import com.core.common.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -48,15 +42,15 @@ class HomeViewModel @Inject constructor(
 
         val weekDate = selectedWeekDate.value!!
         val name = selectedName.value!!
-        viewModelScope.launch {
-            homeRepository.getAlarmRecodes(weekDate.date).collect {
-                Log.d(javaClass.name, "${it}")
-                val selected = it.filter { profileAlarmList ->
-                    profileAlarmList.name == name
-                }
-                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList.sorted() else listOf()
-            }
-        }
+//        viewModelScope.launch {
+//            homeRepository.getAlarmRecodes(weekDate.date).collect {
+//                Log.d(javaClass.name, "${it}")
+//                val selected = it.filter { profileAlarmList ->
+//                    profileAlarmList.name == name
+//                }
+//                _selectedAlarmList.value = if (selected.isNotEmpty()) selected[0].alarmList.sorted() else listOf()
+//            }
+//        }
     }
 
 

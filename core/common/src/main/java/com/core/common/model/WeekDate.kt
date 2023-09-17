@@ -1,4 +1,4 @@
-package com.kusitms.hdmedi.feature.home.ui.model
+package com.core.common.model
 
 data class WeekDate(
     val date: String, // 2023-09-17

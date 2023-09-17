@@ -13,7 +13,7 @@ import com.core.common.adapter.ProfileAdapter
 import com.core.common.model.Profile
 import com.kusitms.hdmedi.feature.home.ui.adapter.WeekDateAdapter
 import com.kusitms.hdmedi.feature.home.ui.databinding.FragmentHomeBinding
-import com.kusitms.hdmedi.feature.home.ui.util.DateUtil
+import com.core.common.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

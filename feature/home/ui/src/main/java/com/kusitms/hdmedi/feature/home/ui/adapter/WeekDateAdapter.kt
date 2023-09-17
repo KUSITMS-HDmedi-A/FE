@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.hdmedi.feature.home.ui.databinding.ItemWeekdateBinding
-import com.kusitms.hdmedi.feature.home.ui.model.WeekDate
+import com.core.common.model.WeekDate
 
 class WeekDateAdapter(
     private val list: List<WeekDate>,

@@ -1,7 +1,7 @@
-package com.kusitms.hdmedi.feature.home.ui.util
+package com.core.common
 
 import android.util.Log
-import com.kusitms.hdmedi.feature.home.ui.model.WeekDate
+import com.core.common.model.WeekDate
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
