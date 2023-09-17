@@ -42,11 +42,6 @@ class NetworkDataSourceImpl @Inject constructor(
     /**
      * medicine
      */
-    override suspend fun enrollMedicine(medicine: EnrollMedicineRequest): Response =
-        networkApi.enrollMedicine(medicine = medicine)
-
-    override suspend fun getMedicines(): MedicineListResponse =
-        networkApi.getMedicines()
 
     /**
      * child-medicine

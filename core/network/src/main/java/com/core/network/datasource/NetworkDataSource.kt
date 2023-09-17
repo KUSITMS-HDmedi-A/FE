@@ -43,8 +43,6 @@ interface NetworkDataSource {
     /**
      * medicine
      */
-    suspend fun enrollMedicine(medicine: EnrollMedicineRequest) : Response
-    suspend fun getMedicines(): MedicineListResponse
 
     /**
      * child-medicine

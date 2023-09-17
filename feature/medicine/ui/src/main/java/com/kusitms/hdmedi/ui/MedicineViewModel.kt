@@ -6,35 +6,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.network.ApiService
-import com.core.network.model.ADHDQuestionResponse
 import com.core.network.model.EnrollMedicineRequest
 import com.core.network.model.EnrolledMedicine
-import com.core.network.model.Medicine
 import com.core.network.model.MedicineList
 import com.core.network.model.MedicineListResponse
 import com.core.network.model.Response
 import com.core.network.utils.TokenDataStore
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.core.common.model.Alarm
-import com.core.common.model.WeekDate
-import com.kusitms.hdmedi.feature.medicine.data.repo.MedicineRepositoryImpl
-import com.kusitms.hdmedi.feature.medicine.domain.repo.MedicineRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import com.core.network.model.CharacterMedicine
 import javax.inject.Inject
 
 @HiltViewModel
 class MedicineViewModel @Inject constructor(
     val tokenDataStore: TokenDataStore,
-    val service: ApiService
-    val repository: MedicineRepositoryImpl
+    val service: ApiService,
 ): ViewModel() {
 
     var token = MutableLiveData<String>()
@@ -92,7 +81,7 @@ class MedicineViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            var tempCharacterMedicine = mutableListOf<Medicine>()
+            var tempCharacterMedicine = mutableListOf<CharacterMedicine>()
 //            var tempEnrollMedicine = mutableListOf<EnrolledMedicine>()
 //            var tempMedicineInfo = mutableListOf<MedicineList>()
 
@@ -158,7 +147,7 @@ class MedicineViewModel @Inject constructor(
 //                                    Log.d("로그", "tempEnrollSize : ${tempEnrollMedicine.size}")
                                 }
 
-                                var c1 = Medicine(name, tempEnrollMedicine)
+                                var c1 = CharacterMedicine(name, tempEnrollMedicine)
                                 tempCharacterMedicine.add(c1)
                                 Log.d("로그", "tempCharacterMedicine : ${tempCharacterMedicine}")
                                 Log.d("로그", "tempCharacterMedicineSize : ${tempCharacterMedicine.size}")
