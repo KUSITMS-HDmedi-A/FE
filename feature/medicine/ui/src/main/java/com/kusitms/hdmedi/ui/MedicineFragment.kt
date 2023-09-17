@@ -2,7 +2,6 @@ package com.kusitms.hdmedi.ui
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +9,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.core.network.model.Medicine
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kusitms.hdmedi.ui.databinding.FragmentMedicineBinding
@@ -41,7 +35,6 @@ class MedicineFragment : Fragment() {
 
     lateinit var viewModel: MedicineViewModel
 
-    var medicineList = mutableListOf<Medicine>()
 
     var handler: Handler = Handler()
 
@@ -51,9 +44,9 @@ class MedicineFragment : Fragment() {
         var characterImage = com.core.common.R.drawable.img_daughter
         var onClickPosition = 0
         var characterImageList = listOf<Int>(
+            com.core.common.R.drawable.img_mom,
             com.core.common.R.drawable.img_daughter,
             com.core.common.R.drawable.img_son,
-            com.core.common.R.drawable.img_mom
         )
     }
 
@@ -65,7 +58,7 @@ class MedicineFragment : Fragment() {
 
     // 탭에 표시할 이름
     val tabName = arrayOf(
-        "약 관리","복용 기록"
+        "약 관리", "복용 기록"
     )
 
     override fun onCreateView(
@@ -95,16 +88,18 @@ class MedicineFragment : Fragment() {
             pagerTabMedicine.adapter = TabAdapterClass(this@MedicineFragment)
 
             // 탭 구성
-            val tabLayoutMediator = TabLayoutMediator(tabMedicine, pagerTabMedicine){ tab: TabLayout.Tab, i: Int ->
-                tab.text = tabName[i]
-            }
+            val tabLayoutMediator =
+                TabLayoutMediator(tabMedicine, pagerTabMedicine) { tab: TabLayout.Tab, i: Int ->
+                    tab.text = tabName[i]
+                }
             tabLayoutMediator.attach()
 
             handler.postDelayed({
                 recyclerViewMedicinePeople.run {
                     adapter = RecyclerViewAdapter()
 
-                    layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                    layoutManager =
+                        LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 }
             }, 100)
 
@@ -174,13 +169,15 @@ class MedicineFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return viewModel.characterMedicineList.value!!.characterList.size
+            return if (viewModel.characterMedicineList.value != null) viewModel.characterMedicineList.value!!.characterList.size
+            else 0
         }
 
         override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
             holder.rowImage.setImageResource(characterImageList[position])
-            holder.rowName.text = viewModel.characterMedicineList.value!!.characterList.get(position).characterName
-            if(position == onClickPosition) {
+            holder.rowName.text =
+                viewModel.characterMedicineList.value!!.characterList.get(position).characterName
+            if (position == onClickPosition) {
                 holder.rowLayout.setBackgroundResource(com.core.common.R.drawable.bg_circle_select)
                 holder.rowName.setTextColor(resources.getColor(R.color.main_blue))
             } else {
@@ -191,7 +188,8 @@ class MedicineFragment : Fragment() {
     }
 
     // adapter 클래스
-    inner class TabAdapterClass(fragmentActivity: MedicineFragment) : FragmentStateAdapter(fragmentActivity){
+    inner class TabAdapterClass(fragmentActivity: MedicineFragment) :
+        FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {
 //            Log.d("##","fragmentList size : ${fragmentList.size}")
             return fragmentList.size
