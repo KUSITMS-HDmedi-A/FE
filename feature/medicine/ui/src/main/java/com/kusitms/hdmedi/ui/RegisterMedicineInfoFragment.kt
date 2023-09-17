@@ -116,7 +116,7 @@ class RegisterMedicineInfoFragment : Fragment() {
                 var startDate = medicineList?.get(1).toString()
                 var endDate = medicineList?.get(2).toString()
 
-                var e1 = EnrollMedicineRequest(purpose, startDate, endDate,"김리아", retrievedTextList)
+                var e1 = EnrollMedicineRequest(purpose, startDate, endDate,"김리아(딸)", retrievedTextList)
                 Log.d("##", "$e1")
 
                 viewModel.enrollMedicine(e1)
