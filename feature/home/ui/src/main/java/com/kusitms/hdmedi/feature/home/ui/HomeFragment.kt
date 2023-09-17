@@ -35,6 +35,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         bindingVm()
     }
 
+    override fun onResume() {
+        super.onResume()
+        bindingVm()
+    }
+
     private fun bindingVm() {
         viewModel.selectedWeekDate.observe(viewLifecycleOwner) {
             Log.d(javaClass.name, "selectedDate changed : ${it.date}")
