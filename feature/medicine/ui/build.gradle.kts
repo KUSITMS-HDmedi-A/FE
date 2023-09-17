@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 //plugins {
 //    id("org.jetbrains.kotlin.android")
 //}
@@ -45,8 +47,12 @@ android {
 
 dependencies {
 
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
     implementation(project(":core:common"))
     implementation(project(":core:navigation"))
+    implementation(project(":core:network"))
     implementation(project(":feature:medicine:domain"))
     implementation(project(":feature:medicine:data"))
 
@@ -55,11 +61,16 @@ dependencies {
 
     implementation(libs.calendar)
 
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.navigation)
     implementation(libs.navigation.ui)
+    implementation(libs.okhttp.logging)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.moshi)
     implementation(libs.calendar)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

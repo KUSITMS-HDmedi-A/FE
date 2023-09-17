@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewMedicineDetail"
             android:layout_width="250dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
             android:layout_weight="1"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,26 +29,13 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/textViewMedicineDetailName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textViewMedicineDetailName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="약 이름"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/textViewMedicineDetailType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:text="[약 종류]"
-                    android:textSize="14sp"/>
-            </LinearLayout>
+                android:text="약 이름"
+                android:textSize="14sp"/>
 
             <LinearLayout
                 android:id="@+id/linearLayoutMedicineDetailTag"

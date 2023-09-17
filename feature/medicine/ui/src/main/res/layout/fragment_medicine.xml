@@ -15,19 +15,17 @@
         tools:layout_editor_absoluteX="-204dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarMedicine"
+        <include
+            android:id="@+id/topBarMedicine"
+            layout="@layout/layout_top_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:backgroundTint="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMedicinePeople"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.kusitms.hdmedi.ui.databinding.FragmentRegisterMedicinePurposeBinding
@@ -49,7 +50,9 @@ class RegisterMedicinePurposeFragment : Fragment() {
 
         fragmentRegisterMedicinePurposeBinding.run {
             buttonRegisterMedicinePurposeNext.setOnClickListener {
-                navController.navigate(R.id.action_registerMedicinePurposeFragment_to_registerMedicineDateFragment)
+                val purpose = textInputEditTextRegisterMedicinePurpose.text.toString()
+                val bundle = bundleOf("purpose" to purpose)
+                navController.navigate(R.id.action_registerMedicinePurposeFragment_to_registerMedicineDateFragment, bundle)
             }
         }
     }

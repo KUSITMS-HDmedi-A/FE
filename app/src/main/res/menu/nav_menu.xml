@@ -15,7 +15,7 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/search_navigation"
         android:icon="@drawable/ic_search"
         android:title="약 검색"
         app:showAsAction="withText" />

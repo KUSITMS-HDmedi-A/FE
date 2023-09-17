@@ -18,6 +18,7 @@
         app:launchSingleTop="true"
         app:popUpToInclusive="false"
         />
+    <include app:graph="@navigation/search_navigation" />
 
 
 </navigation>

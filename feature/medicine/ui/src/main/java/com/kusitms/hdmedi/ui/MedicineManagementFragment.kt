@@ -1,17 +1,22 @@
 package com.kusitms.hdmedi.ui
 
+import android.media.Image
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
+import com.core.network.model.Medicine
+import com.core.network.model.MedicineListResponse
+import com.kusitms.hdmedi.ui.MedicineFragment.Companion.onClickPosition
 import com.kusitms.hdmedi.ui.databinding.FragmentMedicineManagementBinding
 import com.kusitms.hdmedi.ui.databinding.RowMedicineBinding
 import com.kusitms.hdmedi.ui.databinding.RowMedicineDetailBinding
@@ -21,6 +26,13 @@ class MedicineManagementFragment : Fragment() {
 
     lateinit var fragmentMedicineManagementBinding: FragmentMedicineManagementBinding
 
+    lateinit var viewModel: MedicineViewModel
+
+    var expandPosition = 0
+    var tagPosition = 0
+
+    var handler: Handler = Handler()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,15 +40,28 @@ class MedicineManagementFragment : Fragment() {
 
         fragmentMedicineManagementBinding = FragmentMedicineManagementBinding.inflate(inflater)
 
+        viewModel = ViewModelProvider(requireActivity())[MedicineViewModel::class.java]
+        viewModel.run {
+            characterMedicineList.observe(requireActivity()) {
+                fragmentMedicineManagementBinding.recyclerViewMedicineManagement.adapter?.notifyDataSetChanged()
+            }
+        }
+        viewModel.getManageMedicine()
+
         fragmentMedicineManagementBinding.run {
 
             linearLayoutMedicineManagement.visibility = View.GONE
 
-            recyclerViewMedicineManagement.run {
-                adapter = RecyclerViewAdapter()
+            handler.postDelayed({
+                recyclerViewMedicineManagement.run {
+                    adapter = RecyclerViewAdapter()
 
-                layoutManager = LinearLayoutManager(requireContext())
-            }
+                    layoutManager = LinearLayoutManager(requireContext())
+
+                }
+                recyclerViewMedicineManagement.adapter?.notifyDataSetChanged()
+            }, 100)
+
         }
         return fragmentMedicineManagementBinding.root
     }
@@ -77,6 +102,7 @@ class MedicineManagementFragment : Fragment() {
 //                            setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.arrow_down, 0)
                         }
                     } else {
+                        expandPosition = adapterPosition
                         recyclerViewMedicine.visibility = View.VISIBLE
                         buttonmedicineExpand.run {
                             text = "약 간단히 보기"
@@ -101,11 +127,14 @@ class MedicineManagementFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 3
+            return viewModel.characterMedicineList.value?.characterList!!.get(0).enrollMedicineList.size
         }
 
-        override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
 
+        override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
+            holder.medicineCount.text = "${viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(position)?.medicineCount.toString()}알"
+            holder.medicineType.text = viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(position).purpose.toString()
+            holder.medicineDate.text = "${viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(position).startDate} ~ ${viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(position).endDate}"
         }
     }
 
@@ -114,16 +143,16 @@ class MedicineManagementFragment : Fragment() {
             RecyclerView.ViewHolder(rowBinding.root) {
 
             val medicineName: TextView
-            val medicineType: TextView
             val medicineTag: RecyclerView
             val medicineInfo: TextView
+            val medicineImage: ImageView
 
 
             init {
                 medicineName = rowBinding.textViewMedicineDetailName
-                medicineType = rowBinding.textViewMedicineDetailType
                 medicineInfo = rowBinding.textViewMedicineDetailInfo
                 medicineTag = rowBinding.recyclerViewMedicineDetailTag
+                medicineImage = rowBinding.imageViewMedicineDetail
 
                 medicineTag.run {
                     adapter = TagRecyclerViewAdapter()
@@ -146,11 +175,14 @@ class MedicineManagementFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 3
+            return viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(expandPosition).medicineCount
         }
 
         override fun onBindViewHolder(holder: DetailViewHolderClass, position: Int) {
-
+            holder.medicineName.text = viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(expandPosition).medicineList.get(position).name
+            holder.medicineInfo.text = viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(expandPosition).medicineList.get(position).derections
+            tagPosition = position
+            holder.medicineImage.setImageResource(R.drawable.medicine)
         }
     }
 
@@ -179,11 +211,11 @@ class MedicineManagementFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 3
+            return viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(expandPosition).medicineList.get(tagPosition).effectList.size
         }
 
         override fun onBindViewHolder(holder: TagViewHolderClass, position: Int) {
-
+            holder.medicineTag.text = viewModel.characterMedicineList.value?.characterList!!.get(onClickPosition).enrollMedicineList.get(expandPosition).medicineList.get(tagPosition).effectList.get(position)
         }
     }
 }

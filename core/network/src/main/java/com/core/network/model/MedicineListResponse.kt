@@ -4,21 +4,29 @@ import com.squareup.moshi.Json
 
 @Json
 data class MedicineListResponse(
-    val list: List<MedicinePeriodDto>
+    val characterList: List<Medicine>,
+    val code: Int,
+    val message: String
 )
 
 @Json
-data class MedicinePeriodDto(
-    val startDate: String,
+data class Medicine(
+    val characterName: String,
+    val enrollMedicineList: List<EnrolledMedicine>
+)
+
+@Json
+data class EnrolledMedicine(
     val endDate: String,
-    val prescription: Boolean? = false,
+    val medicineCount: Int,
+    val medicineList: List<MedicineList>,
     val purpose: String,
-    val medicines: List<MedicineDto>
+    val startDate: String
 )
 
 @Json
-data class MedicineDto(
-    val img: String,
-    val name: String,
-    val precautions: List<String>
+data class MedicineList(
+    val derections: String,
+    val effectList: List<String>,
+    val name: String
 )
