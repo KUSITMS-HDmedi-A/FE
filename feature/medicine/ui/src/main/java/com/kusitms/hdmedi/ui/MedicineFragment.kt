@@ -1,27 +1,56 @@
 package com.kusitms.hdmedi.ui
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.net.toUri
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.core.network.model.Medicine
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kusitms.hdmedi.ui.databinding.FragmentMedicineBinding
+import com.kusitms.hdmedi.ui.databinding.FragmentMedicineManagementBinding
+import com.kusitms.hdmedi.ui.databinding.RowCharacterBinding
 
 class MedicineFragment : Fragment() {
 
     lateinit var fragmentMedicineBinding: FragmentMedicineBinding
+    lateinit var fragmentMedicineManagementBinding: FragmentMedicineManagementBinding
 
     lateinit var navController: NavController
+
+    lateinit var viewModel: MedicineViewModel
+
+    var medicineList = mutableListOf<Medicine>()
+
+    var handler: Handler = Handler()
+
+
+    companion object {
+        var characterName = ""
+        var characterImage = com.core.common.R.drawable.img_daughter
+        var onClickPosition = 0
+        var characterImageList = listOf<Int>(
+            com.core.common.R.drawable.img_daughter,
+            com.core.common.R.drawable.img_son,
+            com.core.common.R.drawable.img_mom
+        )
+    }
 
 
     val fragmentList = mutableListOf<Fragment>()
@@ -36,6 +65,14 @@ class MedicineFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentMedicineBinding = FragmentMedicineBinding.inflate(inflater)
+        fragmentMedicineManagementBinding = FragmentMedicineManagementBinding.inflate(inflater)
+        viewModel = ViewModelProvider(requireActivity())[MedicineViewModel::class.java]
+        viewModel.run {
+            characterMedicineList.observe(requireActivity()) {
+                fragmentMedicineBinding.recyclerViewMedicinePeople.adapter?.notifyDataSetChanged()
+            }
+        }
+        viewModel.getManageMedicine()
 
         fragmentMedicineBinding.run {
             topBarMedicine.mainHeaderTb.title = "약관리"
@@ -53,10 +90,20 @@ class MedicineFragment : Fragment() {
             }
             tabLayoutMediator.attach()
 
-            }
+            handler.postDelayed({
+                recyclerViewMedicinePeople.run {
+                    adapter = RecyclerViewAdapter()
+
+                    layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                }
+            }, 100)
+
+        }
+
 
         return fragmentMedicineBinding.root
     }
+
 
     // onViewCreated : 뷰를 그리고 나서 실행
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,12 +124,65 @@ class MedicineFragment : Fragment() {
         fragmentList.add(MedicineManagementFragment())
         fragmentList.add(MedicineManagementFragment())
         fragmentMedicineBinding.pagerTabMedicine.requestLayout()
+        fragmentMedicineBinding.recyclerViewMedicinePeople.adapter?.notifyDataSetChanged()
+    }
+
+    inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolderClass>() {
+        inner class ViewHolderClass(rowBinding: RowCharacterBinding) :
+            RecyclerView.ViewHolder(rowBinding.root) {
+
+            val rowName: TextView
+            val rowImage: ImageView
+            val rowLayout: ConstraintLayout
+
+
+            init {
+                rowName = rowBinding.textViewCharacterName
+                rowImage = rowBinding.imageViewCharacter
+                rowLayout = rowBinding.constraintLayoutCharacterCircle
+
+                rowBinding.root.setOnClickListener {
+                    onClickPosition = adapterPosition
+                    fragmentMedicineBinding.pagerTabMedicine.requestLayout()
+                    fragmentMedicineManagementBinding.recyclerViewMedicineManagement.adapter?.notifyDataSetChanged()
+                    fragmentMedicineBinding.recyclerViewMedicinePeople.adapter?.notifyDataSetChanged()
+                }
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
+            val rowSelfCheckBinding = RowCharacterBinding.inflate(layoutInflater)
+            val viewHolder = ViewHolderClass(rowSelfCheckBinding)
+
+            rowSelfCheckBinding.root.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            return viewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return viewModel.characterMedicineList.value!!.characterList.size
+        }
+
+        override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
+            holder.rowImage.setImageResource(characterImageList[position])
+            holder.rowName.text = viewModel.characterMedicineList.value!!.characterList.get(position).characterName
+            if(position == onClickPosition) {
+                holder.rowLayout.setBackgroundResource(com.core.common.R.drawable.bg_circle_select)
+                holder.rowName.setTextColor(resources.getColor(R.color.main_blue))
+            } else {
+                holder.rowLayout.setBackgroundResource(R.drawable.bg_circle_default)
+                holder.rowName.setTextColor(resources.getColor(R.color.text_gray))
+            }
+        }
     }
 
     // adapter 클래스
     inner class TabAdapterClass(fragmentActivity: MedicineFragment) : FragmentStateAdapter(fragmentActivity){
         override fun getItemCount(): Int {
-            Log.d("##","fragmentList size : ${fragmentList.size}")
+//            Log.d("##","fragmentList size : ${fragmentList.size}")
             return fragmentList.size
         }
 
