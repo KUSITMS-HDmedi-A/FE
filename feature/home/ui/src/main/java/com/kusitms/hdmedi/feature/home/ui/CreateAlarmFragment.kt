@@ -25,6 +25,7 @@ class CreateAlarmFragment :
         binding.lifecycleOwner = this
         initView()
         bindingVm()
+        setOnClickListener()
     }
 
     private fun bindingVm(){
@@ -33,6 +34,12 @@ class CreateAlarmFragment :
                 binding.layoutStart.date = it.startDateUI
                 binding.layoutEnd.date = it.endDateUI
             }
+        }
+    }
+
+    private fun setOnClickListener(){
+        binding.header.btnRight.setOnClickListener {
+            Log.d(javaClass.name, "${binding.autoTv.text}, ${binding.timePicker.hour}, ${binding.timePicker.minute}, ${binding.etLabel.text}")
         }
     }
 
@@ -69,11 +76,16 @@ class CreateAlarmFragment :
         }
 
         // 알람 시간 선택
+        binding.timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
+            Log.d(javaClass.name, "${hourOfDay}, ${minute}")
+        }
 
         // 요일 선택
         binding.btnEveryday.tvTitle.text = getString(R.string.everyday)
+        binding.btnEveryday.selected = true
         binding.btnWeekday.tvTitle.text = getString(R.string.weekday)
         binding.btnWeekend.tvTitle.text = getString(R.string.weekend)
+
     }
 
     private fun createBottomSheetCalendar() {
