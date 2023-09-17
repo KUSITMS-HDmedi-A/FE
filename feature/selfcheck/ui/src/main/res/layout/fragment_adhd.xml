@@ -85,7 +85,7 @@
                 android:id="@+id/buttonAdhdStart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="49dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/main_blue"
                 android:text="검사 시작"

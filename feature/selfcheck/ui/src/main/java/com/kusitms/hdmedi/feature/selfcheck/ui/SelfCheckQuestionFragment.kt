@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.core.network.model.ADHDResultRequest
 import com.kusitms.hdmedi.feature.selfcheck.ui.databinding.FragmentSelfCheckQuestionBinding
 
 class SelfCheckQuestionFragment : Fragment() {
@@ -36,11 +38,16 @@ class SelfCheckQuestionFragment : Fragment() {
         R.drawable.selfcheck18
     )
 
+    var blueList = mutableListOf<String>()
+    var descriptionList = mutableListOf<String>()
+
     var scoreList = mutableListOf<Int>()
 
     var i = 0
 
     lateinit var navController: NavController
+
+    lateinit var viewModel: SelfCheckQuestionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +55,16 @@ class SelfCheckQuestionFragment : Fragment() {
     ): View? {
 
         fragmentSelfCheckQuestionBinding = FragmentSelfCheckQuestionBinding.inflate(inflater)
+
+        viewModel = ViewModelProvider(requireActivity())[SelfCheckQuestionViewModel::class.java]
+        viewModel.run {
+            questionBlueList.observe(requireActivity()) {
+                blueList = it
+            }
+            questionDescriptionList.observe(requireActivity()) {
+                descriptionList = it
+            }
+        }
 
         fragmentSelfCheckQuestionBinding.run {
             toolbarSelfCheckPerson.run {
@@ -89,9 +106,15 @@ class SelfCheckQuestionFragment : Fragment() {
             if(i < imageList.size -1) {
                 i++
                 imageViewSelfCheckQuestion.setImageResource(imageList[i])
+                textViewSelfCheckQuestionSummary.text = blueList[i]
+                textViewSelfCheckQuestionQuestion.text = descriptionList[i]
                 progressSelfCheckPerson.progress = i + 1
             }
             else {
+                var input = requireArguments().getString("character")
+                Log.d("##", "input : $input")
+                var r1 = ADHDResultRequest(input.toString(), scoreList)
+                viewModel.getResult(viewModel.getToken().toString(), r1)
                 navController.navigate(R.id.action_selfCheckQuestionFragment_to_selfCheckQuestionCompleteFragment)
             }
         }

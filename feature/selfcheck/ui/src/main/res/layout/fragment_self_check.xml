@@ -25,8 +25,10 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSelfCheck"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
