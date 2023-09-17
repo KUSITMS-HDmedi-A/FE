@@ -44,9 +44,9 @@ class MedicineFragment : Fragment() {
         var characterImage = com.core.common.R.drawable.img_daughter
         var onClickPosition = 0
         var characterImageList = listOf<Int>(
-            com.core.common.R.drawable.img_mom,
             com.core.common.R.drawable.img_daughter,
             com.core.common.R.drawable.img_son,
+            com.core.common.R.drawable.img_mom,
         )
     }
 
