@@ -23,8 +23,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMedicinePeople"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
