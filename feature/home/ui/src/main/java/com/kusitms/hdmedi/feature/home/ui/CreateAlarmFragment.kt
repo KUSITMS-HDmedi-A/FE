@@ -39,6 +39,12 @@ class CreateAlarmFragment :
 
     private fun setOnClickListener(){
         binding.header.btnRight.setOnClickListener {
+            viewModel.onClickEnrollBtn(
+                medicine = binding.autoTv.text.toString(),
+                hour = binding.timePicker.hour,
+                minute = binding.timePicker.minute,
+                label = binding.etLabel.text.toString()
+            )
             Log.d(javaClass.name, "${binding.autoTv.text}, ${binding.timePicker.hour}, ${binding.timePicker.minute}, ${binding.etLabel.text}")
         }
     }

@@ -10,6 +10,8 @@ import com.core.common.model.DomainResponse
 import com.core.common.model.ProfileAlarmList
 import com.core.network.model.AddAlarmRequest
 import com.core.network.model.AlarmAddResponse
+import com.core.network.model.NotificationRequest
+import com.kusitms.hdmedi.feature.home.domain.model.Notification
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
@@ -60,6 +62,15 @@ class HomeRepositoryImpl @Inject constructor(
             )
         }
         return flowOf(list).flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun postAlarmNotification(notification: Notification) {
+        val notificationRequest = NotificationRequest(
+            body = notification.body ?: "",
+            title = notification.title,
+            targetUserId = 0
+        )
+        flowOf(dataSource.sendNotification(notificationRequest)).flowOn(Dispatchers.IO)
     }
 
 }
